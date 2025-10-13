@@ -1,6 +1,3 @@
-# --- Ignore tất cả ---
-# ⚠️ Dùng /* thay vì * để không chặn các thư mục con của những thư mục được phép
-/*
 
 # --- Cho phép các thư mục / file quan trọng ---
 !.gitignore
