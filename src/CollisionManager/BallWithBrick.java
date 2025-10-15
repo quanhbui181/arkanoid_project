@@ -51,13 +51,17 @@ public class BallWithBrick {
                 ball.setPositionX(newPositionX);
                 ball.setPositionY(newPositionY);
             }
+            // Góc.
             if (Math.abs(Math.abs(diffX) - Math.abs(diffY)) <= Constants.EPSILON) {
                 ball.setDirectionX(ball.getDirectionX() * (-1));
                 ball.setDirectionY(ball.getDirectionY() * (-1));
             }
+            // Cạnh trái / phải.
             else if (Math.abs(diffX) > Math.abs(diffY)) {
                 ball.setDirectionX(ball.getDirectionX() * (-1));
-            } else {
+            }
+            // Cạnh trên / dưới.
+            else {
                 ball.setDirectionY(ball.getDirectionY() * (-1));
             }
             if (brick.getCurrentBrickType() != BrickType.IMPOSSIBLE) brick.setLives(brick.getLives() - 1);
