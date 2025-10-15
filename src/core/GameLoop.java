@@ -8,6 +8,7 @@ import CollisionManager.BallWithBrick;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
 import utils.Constants;
 import java.util.ArrayList;
 
@@ -37,17 +38,21 @@ public class GameLoop extends AnimationTimer {
         double deltaTime = (now - lastTime) / secondStandard;
         lastTime = now;
         update(deltaTime);
+        gc.setStroke(Color.CRIMSON);
+        gc.setLineWidth(2);
+        gc.strokeRect(Constants.MARGIN_WIDTH, Constants.MARGIN_HEIGHT, Constants.PLAY_SCREEN_WIDTH, Constants.PLAY_SCREEN_HEIGHT);
         render();
     }
 
     private void update(double deltaTime) {
         paddle.setKeyPressed(KeyCode.LEFT, input.isLeftPressed());
         paddle.setKeyPressed(KeyCode.RIGHT, input.isRightPressed());
+        if (input.isSpacePressed() && !ball.play) ball.play = true;
         paddle.update(deltaTime);
-        ball.update(deltaTime);
         for (Brick brick : brickList) {
             brick.update(deltaTime);
         }
+        ball.update(deltaTime);
         checkCollision();
     }
 

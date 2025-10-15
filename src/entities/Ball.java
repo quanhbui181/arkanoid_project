@@ -18,7 +18,7 @@ public class Ball extends MovableObject {
     private double directionY = 1.0; // y-axis ball direction.
     /* private boolean isOver = false; // Check if game is over. */
     private int lives = Constants.BALL_LIVES; // Remaining lives.
-    private final Random rd = new Random(); // Ball direction randomizer.
+    public boolean play = false;
 
     /**
      * Set ball direction to a random angle (30 to 150 degrees).
@@ -48,9 +48,6 @@ public class Ball extends MovableObject {
      */
     public Ball() {
         super(Constants.START_POSITION_X, Constants.START_POSITION_Y, Constants.BALL_RADIUS * 2, Constants.BALL_RADIUS * 2);
-        boolean isLeft = (rd.nextInt(2) == 0);
-        this.setDeltaX(speed * directionX);
-        this.setDeltaY(speed * directionY);
         System.out.println("⚽ Ball Init Success !");
         System.out.println("⚽ Remaining lives: " + lives);
     }
@@ -58,24 +55,31 @@ public class Ball extends MovableObject {
     @Override
     public void move(double deltaTime) {
 
+        double xMin = Constants.MARGIN_WIDTH;
+        double xMax = xMin + Constants.PLAY_SCREEN_WIDTH;
+        double yMin = Constants.MARGIN_HEIGHT;
+        double yMax = yMin + Constants.PLAY_SCREEN_HEIGHT;
+
         this.setDeltaX(directionX * speed * deltaTime);
         this.setDeltaY(directionY * speed * deltaTime);
+
         double newPositionX = this.getPositionX() + this.getDeltaX();
         double newPositionY = this.getPositionY() + this.getDeltaY();
 
-        if (newPositionX + this.getWidth() > Constants.SCREEN_WIDTH) {
-            newPositionX = Constants.SCREEN_WIDTH - this.getWidth();
+        if (newPositionX + this.getWidth() > xMax) {
+            newPositionX = xMax - this.getWidth();
             directionX *= -1;
-        } else if (newPositionX < 0) {
-            newPositionX = 0;
+        } else if (newPositionX < xMin) {
+            newPositionX = xMin;
             directionX *= -1;
         }
 
-        if (newPositionY < 0) {
-            newPositionY = 0;
+        if (newPositionY < yMin) {
+            newPositionY = yMin;
             directionY *= -1;
-        } else if (newPositionY > Constants.SCREEN_HEIGHT + 10) {
+        } else if (newPositionY > yMax + 20) {
             lives -= 1;
+            play = false;
             System.out.println("⚽ Remaining lives: " + lives);
             if (lives <= 0) {
                 /* isOver = true; */
@@ -84,7 +88,6 @@ public class Ball extends MovableObject {
             }
             newPositionX = Constants.START_POSITION_X;
             newPositionY = Constants.START_POSITION_Y;
-            boolean isLeft = (rd.nextInt(2) == 0);
             directionX = 0.0; directionY = 1.0;
         }
 
@@ -94,14 +97,16 @@ public class Ball extends MovableObject {
 
     @Override
     public void update(double deltaTime) {
-        if (lives > 0) move(deltaTime);
+        if (lives > 0 && play) move(deltaTime);
         //Update power-up sau...
     }
 
     @Override
     public void render(GraphicsContext gc) {
-        gc.setFill(Color.BLACK);
-        gc.fillOval(this.getPositionX(), this.getPositionY(), radius * 2, radius * 2);
+        if (lives > 0) {
+            gc.setFill(Color.BLACK);
+            gc.fillOval(this.getPositionX(), this.getPositionY(), radius * 2, radius * 2);
+        }
     }
 
     //Getter and Setter method.

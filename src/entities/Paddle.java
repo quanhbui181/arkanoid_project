@@ -55,6 +55,8 @@ public class Paddle extends MovableObject {
     @Override
     public void move(double deltaTime) {
 
+        double xMin = Constants.MARGIN_WIDTH;
+        double xMax = xMin + Constants.PLAY_SCREEN_WIDTH;
         double deltaX = 0;
 
         if (keyPressed[KeyCode.RIGHT.getCode()]) {
@@ -68,11 +70,11 @@ public class Paddle extends MovableObject {
 
         double newPositionX = this.getPositionX() + this.getDeltaX();
 
-        if (newPositionX + this.getWidth() > Constants.SCREEN_WIDTH) {
-            newPositionX = Constants.SCREEN_WIDTH - this.getWidth();
+        if (newPositionX + this.getWidth() > xMax) {
+            newPositionX = xMax - this.getWidth();
             this.setDeltaX(0);
-        } else if (newPositionX < 0) {
-            newPositionX = 0;
+        } else if (newPositionX < xMin) {
+            newPositionX = xMin;
             this.setDeltaX(0);
         }
 
@@ -87,7 +89,7 @@ public class Paddle extends MovableObject {
 
     @Override
     public void render(GraphicsContext gc) {
-        gc.setFill(Color.BLUE); // Sau này thay bằng texture sau....
+        gc.setFill(Color.BLACK); // Sau này thay bằng texture sau....
         gc.fillRect(this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight());
     }
 

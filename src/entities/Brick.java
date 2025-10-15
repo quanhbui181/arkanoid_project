@@ -113,16 +113,16 @@ public class Brick extends GameObject {
         //Render by type of brick.
         switch (currentBrickType) {
             case BrickType.NORMAL:
-                gc.setFill(Color.FORESTGREEN);
+                gc.setFill(Color.web("#00cc66"));
                 break;
             case BrickType.MEDIUM:
-                gc.setFill(Color.GOLD);
+                gc.setFill(Color.web("#e6b800"));
                 break;
             case BrickType.HARD:
-                gc.setFill(Color.PALEVIOLETRED);
+                gc.setFill(Color.web("#e60000"));
                 break;
             case BrickType.IMPOSSIBLE:
-                gc.setFill(Color.DARKGRAY);
+                gc.setFill(Color.web("#313439"));
                 break;
         }
         gc.fillRect(this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight());
