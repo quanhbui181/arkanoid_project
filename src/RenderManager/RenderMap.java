@@ -3,7 +3,6 @@ package RenderManager;
 import entities.Brick;
 import entities.BrickType;
 import utils.Constants;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;

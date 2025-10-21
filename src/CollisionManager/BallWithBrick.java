@@ -41,7 +41,7 @@ public class BallWithBrick {
                 else ball.setPositionX(ball.getPositionX() - overlapX);
                 ball.setDirectionX(-ball.getDirectionX());
             }
-            if (brick.getCurrentBrickType() != BrickType.IMPOSSIBLE) brick.setLives(brick.getLives() - 1);
+            if (!brick.getCurrentBrickType().isUnbreakable()) brick.setLives(brick.getLives() - 1);
         }
     }
 }

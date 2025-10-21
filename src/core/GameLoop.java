@@ -1,5 +1,7 @@
 package core;
 
+import UI.Game.GameScene;
+import UI.SceneManager;
 import entities.Ball;
 import entities.Brick;
 import entities.Paddle;
@@ -15,6 +17,9 @@ import java.util.ArrayList;
 // game loop(time line/ animation)
 public class GameLoop extends AnimationTimer {
 
+    private final SceneManager sceneManager;
+    private final GameScene gameScene;
+
     private final Ball ball;
     private final Paddle paddle;
     private final ArrayList<Brick> brickList;
@@ -22,7 +27,9 @@ public class GameLoop extends AnimationTimer {
     private final InputHandler input;
     private long lastTime;
 
-    public GameLoop(Ball ball, Paddle paddle, ArrayList<Brick> brickList, GraphicsContext gc, InputHandler input) {
+    public GameLoop(Ball ball, Paddle paddle, ArrayList<Brick> brickList, GraphicsContext gc, InputHandler input, SceneManager sceneManager, GameScene gameScene) {
+        this.sceneManager = sceneManager;
+        this.gameScene = gameScene;
         this.ball = ball;
         this.paddle = paddle;
         this.brickList = brickList;
@@ -41,6 +48,12 @@ public class GameLoop extends AnimationTimer {
         gc.setStroke(Color.CRIMSON);
         gc.setLineWidth(2);
         gc.strokeRect(Constants.MARGIN_WIDTH, Constants.MARGIN_HEIGHT, Constants.PLAY_SCREEN_WIDTH, Constants.PLAY_SCREEN_HEIGHT);
+        if (ball.getLives() <= 0) {
+            sceneManager.switchTo("GameOver");
+            this.stop();
+        } else if (brickList.isEmpty()) {
+            gameScene.goToNextLevel();
+        }
         render();
     }
 

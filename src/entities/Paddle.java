@@ -6,6 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
+import java.util.Arrays;
+
 /**
  * Paddle management.
  *
@@ -17,26 +19,11 @@ public class Paddle extends MovableObject {
     private final boolean[] keyPressed = new boolean[256]; // Handle keyboard events.
 
     /**
-     * Initialize default object.
-     *
-     * @param width The width of the object.
-     * @param height The height of the object.
-     */
-    public Paddle(int width, int height) {
-        super(width, height);
-        this.setDeltaX(speed);
-    }
-
-    /**
      * Initialize object.
      *
-     * @param positionX Upper-left x-coordinate.
-     * @param positionY Upper-left y-coordinate.
-     * @param width The width of the object.
-     * @param height The height of the object.
      */
-    public Paddle(double positionX, double positionY, int width, int height) {
-        super(positionX, positionY, width, height);
+    public Paddle() {
+        super(Constants.PADDLE_START_POSITION_X, Constants.PADDLE_START_POSITION_Y, Constants.PADDLE_WIDTH, Constants.PADDLE_HEIGHT, Constants.PADDLE_TEXTURE_PATH);
         this.setDeltaX(speed);
     }
 
@@ -89,8 +76,19 @@ public class Paddle extends MovableObject {
 
     @Override
     public void render(GraphicsContext gc) {
-        gc.setFill(Color.BLACK); // Sau này thay bằng texture sau....
-        gc.fillRect(this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight());
+        gc.drawImage(this.getTexture(), this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight());
+    }
+
+    @Override
+    public void reset() {
+        speed = Constants.PADDLE_SPEED;
+        PowerUpType currentPowerUp = PowerUpType.NONE;
+        Arrays.fill(keyPressed, false);
+        this.setDeltaX(speed);
+        this.setPositionX(Constants.PADDLE_START_POSITION_X);
+        this.setPositionY(Constants.PADDLE_START_POSITION_Y);
+        this.setWidth(Constants.PADDLE_WIDTH);
+        this.setHeight(Constants.PADDLE_HEIGHT);
     }
 
     // Getter and Setter method.

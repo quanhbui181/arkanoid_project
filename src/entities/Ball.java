@@ -1,10 +1,10 @@
 package entities;
 
+import javafx.scene.image.Image;
 import utils.Constants;
 import core.MovableObject;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import java.util.Random;
 
 /**
  * Ball management.
@@ -16,12 +16,11 @@ public class Ball extends MovableObject {
     private int radius = Constants.BALL_RADIUS; // Default ball radius.
     private double directionX = 0.0; // x-axis ball direction.
     private double directionY = 1.0; // y-axis ball direction.
-    /* private boolean isOver = false; // Check if game is over. */
     private int lives = Constants.BALL_LIVES; // Remaining lives.
-    public boolean play = false;
+    public boolean play = false; // Want to play ?
 
     /**
-     * Set ball direction to a random angle (30 to 150 degrees).
+     * Set ball direction (30 to 150 degrees).
      *
      * @param ballCenterX PositionX of the center of the ball.
      * @param paddleCenterX PositionX of the center of the paddle.
@@ -32,8 +31,8 @@ public class Ball extends MovableObject {
         double relativeIntersectX = ballCenterX - paddleCenterX; // left ( < 0), middle ( = 0), right (> 0).
         // Scale the ball's relative position to a value between -1.0 and 1.0.
         double normalize = relativeIntersectX / (paddleWidth / 2.0);
-        /* if (normalize > 1.0) normalize = 1.0;
-        else if (normalize < -1.0) normalize = -1.0; */
+        if (normalize > 1.0) normalize = 1.0;
+        else if (normalize < -1.0) normalize = -1.0;
         double baseAngle = Math.PI / 2;
         double maxAngleOffset = Math.PI / 3;
         double bounceAngle = baseAngle - (normalize * maxAngleOffset); // (30 - 150 degree).
@@ -47,7 +46,7 @@ public class Ball extends MovableObject {
      *
      */
     public Ball() {
-        super(Constants.START_POSITION_X, Constants.START_POSITION_Y, Constants.BALL_RADIUS * 2, Constants.BALL_RADIUS * 2);
+        super(Constants.BALL_START_POSITION_X, Constants.BALL_START_POSITION_Y, Constants.BALL_RADIUS * 2, Constants.BALL_RADIUS * 2, Constants.BALL_TEXTURE_PATH);
         System.out.println("⚽ Ball Init Success !");
         System.out.println("⚽ Remaining lives: " + lives);
     }
@@ -86,8 +85,8 @@ public class Ball extends MovableObject {
                 System.out.println("\uD83D\uDC80 Dead !");
                 return;
             }
-            newPositionX = Constants.START_POSITION_X;
-            newPositionY = Constants.START_POSITION_Y;
+            newPositionX = Constants.BALL_START_POSITION_X;
+            newPositionY = Constants.BALL_START_POSITION_Y;
             directionX = 0.0; directionY = 1.0;
         }
 
@@ -104,9 +103,22 @@ public class Ball extends MovableObject {
     @Override
     public void render(GraphicsContext gc) {
         if (lives > 0) {
-            gc.setFill(Color.BLACK);
-            gc.fillOval(this.getPositionX(), this.getPositionY(), radius * 2, radius * 2);
+            gc.drawImage(this.getTexture(), this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight());
         }
+    }
+
+    @Override
+    public void reset() {
+        speed = Constants.BALL_SPEED; // Default ball movement speed.
+        radius = Constants.BALL_RADIUS; // Default ball radius.
+        directionX = 0.0; // x-axis ball direction.
+        directionY = 1.0; // y-axis ball direction.
+        lives = Constants.BALL_LIVES; // Remaining lives.
+        play = false;
+        this.setPositionX(Constants.BALL_START_POSITION_X);
+        this.setPositionY(Constants.BALL_START_POSITION_Y);
+        this.setWidth(Constants.BALL_RADIUS * 2);
+        this.setHeight(Constants.BALL_RADIUS * 2);
     }
 
     //Getter and Setter method.
@@ -127,11 +139,8 @@ public class Ball extends MovableObject {
 
     public void setDirectionY(double directionY) { this.directionY = directionY; }
 
-    /* public boolean isOver() { return isOver; }
-
-    public void setOver(boolean isOver) { this.isOver = isOver; } */
-
     public int getLives() { return lives; }
 
     public void setLives(int lives) { this.lives = lives; }
+
 }
