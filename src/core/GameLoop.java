@@ -48,12 +48,19 @@ public class GameLoop extends AnimationTimer {
         gc.setStroke(Color.CRIMSON);
         gc.setLineWidth(2);
         gc.strokeRect(Constants.MARGIN_WIDTH, Constants.MARGIN_HEIGHT, Constants.PLAY_SCREEN_WIDTH, Constants.PLAY_SCREEN_HEIGHT);
+        gameScene.updateLivesUI(ball.getLives());
         if (ball.getLives() <= 0) {
             sceneManager.switchTo("GameOver");
             this.stop();
-        } else if (brickList.isEmpty()) {
-            gameScene.goToNextLevel();
         }
+        boolean nextLevel = true;
+        for (Brick brick : brickList) {
+            if (!brick.getIsDestroyed()) {
+                nextLevel = false;
+                break;
+            }
+        }
+        if (nextLevel) gameScene.goToNextLevel();
         render();
     }
 

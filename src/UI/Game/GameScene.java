@@ -7,25 +7,43 @@ import core.InputHandler;
 import entities.Ball;
 import entities.Brick;
 import entities.Paddle;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import utils.Constants;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameScene {
 
     private final SceneManager sceneManager;
 
-    private final Scene scene;
+    private Scene scene;
     private final GameLoop gameLoop;
 
     private final Ball ball;
     private final Paddle paddle;
     private final ArrayList<Brick> brickList;
     private GraphicsContext gc;
-    private int currentLevel = 2;
+    private int currentLevel = 1;
+
+    @FXML
+    private ImageView pauseButton;
+    @FXML
+    private ImageView exitButton;
+    @FXML
+    private ImageView heart1;
+    @FXML
+    private ImageView heart2;
+    @FXML
+    private ImageView heart3;
+
+    private ArrayList<ImageView> heartIcons;
 
     public GameScene(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
@@ -36,10 +54,40 @@ public class GameScene {
         paddle = new Paddle();
         ball = new Ball();
         InputHandler input = new InputHandler();
-        Pane root = new Pane(canvas);
+        gameLoop = new GameLoop(ball, paddle, brickList, gc, input, sceneManager, this);
+
+        AnchorPane root;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/Game/GameScene.fxml"));
+            loader.setController(this);
+            root = loader.load();
+            root.getChildren().add(1, canvas);
+
+            /*
+            heartIcons = new ArrayList<>();
+            heartIcons.add(heart1);
+            heartIcons.add(heart2);
+            heartIcons.add(heart3);
+            updateLivesUI(3); */
+
+            pauseButton.setOnMouseClicked(event -> {
+                System.out.println("Bấm Pause!");
+                gameLoop.stop();
+                sceneManager.switchTo("Pause");
+            });
+
+            exitButton.setOnMouseClicked(event -> {
+                System.out.println("Bấm Exit!");
+                gameLoop.stop();
+                sceneManager.switchTo("Menu");
+            });
+
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            root = new AnchorPane(canvas);
+        }
         scene = new Scene(root, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         input.getKey(scene);
-        gameLoop = new GameLoop(ball, paddle, brickList, gc, input, sceneManager, this);
     }
 
     public Scene getScene() {
@@ -61,6 +109,7 @@ public class GameScene {
         brickList.clear();
         RenderMap rendermap = new RenderMap();
         rendermap.render(currentLevel, brickList);
+        updateLivesUI(3);
     }
 
     public void goToNextLevel() {
@@ -77,6 +126,12 @@ public class GameScene {
 
     public void setCurrentLevel(int currentLevel) {
         this.currentLevel = currentLevel;
+    }
+
+    public void updateLivesUI(int currentLives) {
+        if (currentLives == 2) heart3.setVisible(false);
+        if (currentLives == 1) heart2.setVisible(false);
+        if (currentLives == 0) heart1.setVisible(false);
     }
 
 }

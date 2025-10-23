@@ -27,6 +27,14 @@ public class Main extends Application {
         Pane menuRoot = menuLoader.load();
         sm.addScene("Menu", new Scene(menuRoot));
 
+        FXMLLoader tutorialLoader = new FXMLLoader(getClass().getResource("/UI/Tutorial/TutorialScene.fxml"));
+        Pane tutorialRoot = tutorialLoader.load();
+        sm.addScene("Tutorial", new Scene(tutorialRoot));
+
+        FXMLLoader gameOverLoader = new FXMLLoader(getClass().getResource("/UI/GameOver/GameOverScene.fxml"));
+        Pane gameOverRoot = gameOverLoader.load();
+        sm.addScene("GameOver", new Scene(gameOverRoot));
+
         // chinh ti'
         primaryStage.setTitle("Anh Jack oi em yeu anh nhieu lam ❤❤❤");
         primaryStage.setResizable(false);

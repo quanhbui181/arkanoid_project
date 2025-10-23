@@ -68,5 +68,6 @@ public class SceneManager {
             System.out.println("Đang vào Game !");
             gameSceneInstance.start();
         }
+
     }
 }
