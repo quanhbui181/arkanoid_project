@@ -26,6 +26,7 @@ public class GameLoop extends AnimationTimer {
     private final GraphicsContext gc;
     private final InputHandler input;
     private long lastTime;
+    private int score = 0;
 
     public GameLoop(Ball ball, Paddle paddle, ArrayList<Brick> brickList, GraphicsContext gc, InputHandler input, SceneManager sceneManager, GameScene gameScene) {
         this.sceneManager = sceneManager;
@@ -70,7 +71,12 @@ public class GameLoop extends AnimationTimer {
         if (input.isSpacePressed() && !ball.play) ball.play = true;
         paddle.update(deltaTime);
         for (Brick brick : brickList) {
-            brick.update(deltaTime);
+            if (!brick.getIsDestroyed()) {
+                brick.update(deltaTime);
+                if (brick.getIsDestroyed()) {
+                    System.out.println("\uD83C\uDFAF Score: " + (++score));
+                }
+            }
         }
         ball.update(deltaTime);
         checkCollision();
@@ -90,4 +96,13 @@ public class GameLoop extends AnimationTimer {
             brick.render(gc);
         }
     }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
 }

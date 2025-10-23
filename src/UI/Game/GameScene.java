@@ -63,13 +63,6 @@ public class GameScene {
             root = loader.load();
             root.getChildren().add(1, canvas);
 
-            /*
-            heartIcons = new ArrayList<>();
-            heartIcons.add(heart1);
-            heartIcons.add(heart2);
-            heartIcons.add(heart3);
-            updateLivesUI(3); */
-
             pauseButton.setOnMouseClicked(event -> {
                 System.out.println("Bấm Pause!");
                 gameLoop.stop();
@@ -96,6 +89,7 @@ public class GameScene {
 
     public void start() {
         reset();
+        System.out.println("\uD83C\uDFAF Score: " + gameLoop.getScore());
         gameLoop.start();
     }
 
@@ -104,12 +98,16 @@ public class GameScene {
     }
 
      public void reset() {
+        gameLoop.setScore(0);
         ball.reset();
         paddle.reset();
         brickList.clear();
         RenderMap rendermap = new RenderMap();
         rendermap.render(currentLevel, brickList);
         updateLivesUI(3);
+        heart1.setVisible(true);
+        heart2.setVisible(true);
+        heart3.setVisible(true);
     }
 
     public void goToNextLevel() {
