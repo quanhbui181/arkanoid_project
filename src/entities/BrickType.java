@@ -3,9 +3,9 @@ package entities;
 public enum BrickType {
 
     NORMAL(1, "/images/gameImages/brickImages/green-bricks.png"),
-    MEDIUM(3, "/images/gameImages/brickImages/orange-bricks.png"),
-    HARD(5, "/images/gameImages/brickImages/red-bricks.png"),
-    IMPOSSIBLE(-1, "/images/gameImages/brickImages/white-bricks.png");
+    MEDIUM(3, "/images/gameImages/brickImages/lava2.png"),
+    HARD(5, "/images/gameImages/brickImages/lava1.png"),
+    IMPOSSIBLE(-1, "/images/gameImages/brickImages/gray-bricks.png");
 
     private final int hits;
     private final String texturePath;

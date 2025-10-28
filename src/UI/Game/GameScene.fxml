@@ -17,17 +17,17 @@
         </ImageView>
         <ImageView fx:id="heart1" fitHeight="40.0" fitWidth="45.0" layoutX="1094.0" layoutY="826.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@/images/gameImages/heart.png" />
+                <Image url="@/images/gameImages/heart3.png" />
             </image>
         </ImageView>
         <ImageView fx:id="heart2" fitHeight="40.0" fitWidth="45.0" layoutX="1154.0" layoutY="826.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@/images/gameImages/heart.png" />
+                <Image url="@/images/gameImages/heart3.png" />
             </image>
         </ImageView>
         <ImageView fx:id="heart3" fitHeight="40.0" fitWidth="45.0" layoutX="1215.0" layoutY="826.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@/images/gameImages/heart.png" />
+                <Image url="@/images/gameImages/heart3.png" />
             </image>
         </ImageView>
         <ImageView fx:id="exitButton" fitHeight="80.0" fitWidth="145.0" layoutX="29.0" layoutY="786.0" pickOnBounds="true" preserveRatio="true">
