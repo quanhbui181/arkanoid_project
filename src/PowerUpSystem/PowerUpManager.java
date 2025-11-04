@@ -38,7 +38,7 @@ public class PowerUpManager {
     private final Random random;
 
     // ===== CONFIGURATION =====
-    private double spawnChance = 1.0;
+    private double spawnChance = 0.9;
 
     // ===== CONSTRUCTOR =====
 
@@ -89,7 +89,7 @@ public class PowerUpManager {
                 PowerUpType.MULTI_BALL,
                 PowerUpType.FAST_BALL,
                 PowerUpType.EXTRA_LIFE,
-                // PowerUpType.SUDDEN_DEATH, // Commented out: too harsh
+                PowerUpType.SUDDEN_DEATH, // Commented out: too harsh
                 PowerUpType.SCORE_MULTIPLIER,
                 PowerUpType.SLOW_MOTION
         };
