@@ -84,6 +84,7 @@ public class GameLoop extends AnimationTimer {
         if (ball.getLives() <= 0 && ballList.isEmpty()) {
             sceneManager.switchTo("GameOver");
             this.stop();
+            gameScene.updateHighScores();
             return;
         }
 

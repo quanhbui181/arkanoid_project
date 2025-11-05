@@ -1,0 +1,80 @@
+package core;
+
+import com.sun.tools.javac.Main;
+
+import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static java.lang.Math.max;
+
+public class HighScore {
+
+    private static final String HIGHSCORE_PATH = "highscores.txt";
+
+    private final List<Player> highScoresList;
+
+    public HighScore() {
+        this.highScoresList = loadHighScoresList();
+    }
+
+    public List<Player> getHighScoresList() {
+        return highScoresList;
+    }
+
+    public void addScore(int score, String currentPlayerName) {
+        if (score == 0) {
+            return;
+        }
+        boolean isExist = false;
+        for (Player player : highScoresList) {
+            if (player.getName().equals(currentPlayerName)) {
+                player.setScore(Math.max(player.getScore(), score));
+                isExist = true;
+            }
+        }
+        if (!isExist) {
+            highScoresList.add(new Player(score, currentPlayerName));
+        }
+        Collections.sort(highScoresList);
+        while (highScoresList.size() > 8) {
+            highScoresList.removeLast();
+        }
+        saveHighScoresList();
+    }
+
+    private void saveHighScoresList() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(HIGHSCORE_PATH))) {
+            for (Player player : highScoresList) {
+                String line = player.getName() + "~" + player.getScore() + "~" + player.getLocalDateTime();
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    private List<Player> loadHighScoresList() {
+        List<Player> load = new ArrayList<Player>();
+        if (!new File(HIGHSCORE_PATH).exists()) {
+            return load;
+        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(HIGHSCORE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] tokens = line.split("~");
+                int score = Integer.parseInt(tokens[1]);
+                String name = tokens[0];
+                LocalDateTime time = LocalDateTime.parse(tokens[2]);
+                load.add(new Player(score, time, name));
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return load;
+    }
+}

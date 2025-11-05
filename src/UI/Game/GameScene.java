@@ -6,7 +6,9 @@ import RenderManager.RenderMap;
 import UI.SceneManager;
 import audio.SoundManager;
 import core.GameLoop;
+import core.HighScore;
 import core.InputHandler;
+import core.Player;
 import entities.Ball;
 import entities.Brick;
 import entities.Paddle;
@@ -34,7 +36,9 @@ import utils.Constants;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.LongAdder;
 
 public class GameScene {
 
@@ -49,13 +53,12 @@ public class GameScene {
     private final GraphicsContext gc;
     private int currentLevel = 1;
 
+
     private final PowerUpManager powerUpManager;
     private final Map<PowerUpType, Node> powerUpUIMap = new HashMap<>();
+    private final HighScore highScore;
+    private String currentPlayerName;
 
-    @FXML
-    private ImageView pauseButton;
-    @FXML
-    private ImageView exitButton;
     @FXML
     private ImageView heart1;
     @FXML
@@ -67,7 +70,7 @@ public class GameScene {
     @FXML
     private VBox boxOfCredits;
     @FXML
-    private ScrollPane credits;
+    private VBox boxOfHighScores;
 
 
     public GameScene() {
@@ -87,14 +90,14 @@ public class GameScene {
         ArrayList<Ball> ballList = new ArrayList<>();
         powerUpManager = new PowerUpManager(ball, paddle, ballList);
         gameLoop = new GameLoop(ball, paddle, brickList, gc, input, sceneManager, this, powerUpManager, ballList);
-
+        highScore = new HighScore();
         AnchorPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/Game/GameScene.fxml"));
             loader.setController(this);
             root = loader.load();
             root.getChildren().add(1, canvas);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             root = new AnchorPane(canvas);
         }
@@ -105,29 +108,56 @@ public class GameScene {
     @FXML
     public void initialize() {
         scoreLabel.textProperty().bind(gameLoop.getScoreProperty().asString("%d"));
-
-        boxOfCredits.prefWidthProperty().bind(credits.widthProperty().subtract(15));
-
-        powerUpManager.getActivePowerUpCredits().addListener(
-                (MapChangeListener<PowerUpType, DoubleProperty>) change -> {
-                    Platform.runLater(() -> {
-                        if (change.wasAdded()) {
-                            createPowerUpUI(change.getKey(), change.getValueAdded());
-                        } else if (change.wasRemoved()) {
-                            removePowerUpUI(change.getKey());
-                        }
-                    });
-                });
+        ActivePowerUpCreditsListener apc = new ActivePowerUpCreditsListener(this);
+        powerUpManager.getActivePowerUpCredits().addListener(apc);
+        createHighScoreUI();
     }
 
-    private void createPowerUpUI(PowerUpType type, DoubleProperty timer) {
+    private void createHighScoreUI() {
+            boxOfHighScores.getChildren().clear();
+            List<Player> top = highScore.getHighScoresList();
+            if (top.isEmpty()) {
+                Label first = new Label("Lan dau cua em...");
+                boxOfHighScores.getChildren().add(first);
+                return;
+            }
+            for (int i = top.size() - 1; i >= 0; --i) {
+                Player player = top.get(i);
+                HBox row = createScoreRow(top.size() - i, player);
+                boxOfHighScores.getChildren().add(row);
+            }
+    }
+
+    private HBox createScoreRow(int rank, Player player) {
+        Label rankLabel;
+        Label info = new Label(player.toString());
+        String colorStyle;
+        if (rank == 1) {
+            rankLabel = new Label("\uD83E\uDD47");
+            colorStyle = "-fx-text-fill: gold;";
+        } else if (rank == 2) {
+            rankLabel = new Label("\uD83E\uDD48");
+            colorStyle = "-fx-text-fill: #E5E4E2;";
+        } else if (rank == 3) {
+            rankLabel = new Label("\uD83E\uDD49");
+            colorStyle = "-fx-text-fill: #CD7F32;";
+        } else {
+            rankLabel = new Label("\uD83E\uDD1D");
+            colorStyle = "-fx-text-fill: silver;";
+        }
+        info.setStyle(colorStyle);
+        rankLabel.setStyle(colorStyle);
+        HBox row = new HBox(10, rankLabel, info);
+        row.setAlignment(Pos.CENTER);
+        return row;
+    }
+
+
+    protected void createPowerUpCreditsUI(PowerUpType type, DoubleProperty timer) {
         Label nameLabel = new Label(type.getName());
-        nameLabel.setTextFill(Color.WHITE);
-        nameLabel.setFont(Font.font("Agency FB", 20));
 
         Label timerLabel = new Label();
         timerLabel.setTextFill(Color.YELLOW);
-        timerLabel.setFont(Font.font("Agency FB", 20));
 
         timerLabel.textProperty().bind(timer.asString("%.1fs"));
 
@@ -138,7 +168,7 @@ public class GameScene {
         boxOfCredits.getChildren().add(row);
     }
 
-    private void removePowerUpUI(PowerUpType type) {
+    protected void removePowerUpCreditsUI(PowerUpType type) {
         Node nodeToRemove = powerUpUIMap.remove(type);
         if (nodeToRemove != null) {
             boxOfCredits.getChildren().remove(nodeToRemove);
@@ -207,7 +237,7 @@ public class GameScene {
         heart3.setVisible(lives >= 3);
 
         // Debug log
-        System.out.println("💖 Lives UI updated: " + lives + " lives");
+        // System.out.println("💖 Lives UI updated: " + lives + " lives");
     }
 
     @FXML
@@ -223,6 +253,16 @@ public class GameScene {
         SceneManager.getInstance().getSoundManager().play("click");
         System.out.println("Bấm Exit!");
         gameLoop.stop();
+        updateHighScores();
         sceneManager.switchTo("Menu");
+    }
+
+    public void updateHighScores() {
+        highScore.addScore(gameLoop.getScore(), currentPlayerName);
+        createHighScoreUI();
+    }
+
+    public void addPlayer(String currentPlayerName) {
+        this.currentPlayerName = currentPlayerName;
     }
 }

@@ -1,14 +1,17 @@
 import UI.Game.GameScene;
 import UI.SceneManager;
+import core.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  *
@@ -51,5 +54,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 
 }
