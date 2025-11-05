@@ -1,6 +1,11 @@
 import UI.Game.GameScene;
 import UI.SceneManager;
+import UI.Shop.CreditManager;
+import UI.Shop.ShopScene;
+import UI.Shop.SkinManager;
 import javafx.application.Application;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -16,10 +21,25 @@ import java.util.Objects;
  */
 public class Main extends Application {
 
+  private CreditManager creditManager = new CreditManager();
+  private SkinManager skinManager = new SkinManager();
+  private LongProperty credits;
+  private SceneManager sm = SceneManager.getInstance();
+
+
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        SceneManager sm = SceneManager.getInstance();
+      // Tai credits ve tu file ngay khi game mo
+      long loadedCredits = creditManager.loadCredits();
+      this.credits = new SimpleLongProperty(loadedCredits);
+
+      credits.addListener((obs,oldVal,newVal) -> {
+        // Moi khi credits thay doi thi luu lai
+        System.out.println("Credits thay doi, tu dong luu: " + newVal.longValue());
+        creditManager.saveCredits(newVal.longValue());
+      });
+
         sm.setPrimaryStage(primaryStage);
 
         // tai menu (fxml)
@@ -34,6 +54,22 @@ public class Main extends Application {
         FXMLLoader gameOverLoader = new FXMLLoader(getClass().getResource("/UI/GameOver/GameOverScene.fxml"));
         Pane gameOverRoot = gameOverLoader.load();
         sm.addScene("GameOver", new Scene(gameOverRoot));
+
+        FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("/UI/Shop/ShopScene.fxml"));
+        Pane shopRoot = shopLoader.load();
+
+        ShopScene shopController = shopLoader.getController();
+        shopController.initData(this.credits, this.creditManager, this.skinManager);
+
+        sm.addScene("Shop", new Scene(shopRoot));
+
+
+//      FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("/UI/Game/GameScene.fxml"));
+//      Pane gameRoot = gameLoader.load();
+
+//      GameScene gameController = gameLoader.getController();
+//      gameController.initData(this.credits);
+//      sm.addScene("Game", new Scene(gameRoot));
 
         // chinh ti'
         primaryStage.setTitle("Anh Jack oi em yeu anh nhieu lam ❤❤❤");
