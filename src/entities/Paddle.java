@@ -6,7 +6,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
+import java.util.Objects;
+
 import java.util.Arrays;
+
+import PowerUpSystem.PowerUpType;
 
 /**
  * Paddle management.
@@ -17,6 +21,33 @@ public class Paddle extends MovableObject {
     private double speed = Constants.PADDLE_SPEED; // Default paddle movement speed.
     private PowerUpType currentPowerUp = PowerUpType.NONE; // Current paddle power-up.
     private final boolean[] keyPressed = new boolean[256]; // Handle keyboard events.
+    private String originalTexturePath = Constants.PADDLE_TEXTURE_PATH;
+
+    /**
+     * Set paddle texture for power-up effect.
+     */
+    public void setPowerUpTexture(String texturePath) {
+        if (texturePath != null) {
+            try {
+                String textureUrl = Objects.requireNonNull(getClass().getResource(texturePath)).toExternalForm();
+                this.setTexture(new javafx.scene.image.Image(textureUrl));
+            } catch (NullPointerException e) {
+                System.err.println("Power-up texture loading failed: " + texturePath);
+            }
+        }
+    }
+
+    /**
+     * Reset paddle texture to original.
+     */
+    public void resetTexture() {
+        try {
+            String textureUrl = Objects.requireNonNull(getClass().getResource(originalTexturePath)).toExternalForm();
+            this.setTexture(new javafx.scene.image.Image(textureUrl));
+        } catch (NullPointerException e) {
+            System.err.println("Original texture loading failed!");
+        }
+    }
 
     /**
      * Initialize object.

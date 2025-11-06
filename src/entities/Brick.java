@@ -17,6 +17,8 @@ public class Brick extends GameObject {
     private int lives = 1; // Hits remaining to destroy.
     private boolean destroyedLog = false; // Log to record which objects have been destroyed.
 
+    private boolean powerUpSpawned = false;
+
     /**
      * Get info of this brick.
      *
@@ -85,12 +87,13 @@ public class Brick extends GameObject {
     @Override
     public void update(double deltaTime) {
         if (currentBrickType.isUnbreakable()) return;
-        //Check if brick is not destroyed and not logged.
+
+        // Check if brick is not destroyed and not logged.
         if (lives <= 0 && !destroyedLog) {
             destroyedLog = true;
             isDestroyed = true;
             String position = "(" + this.getPositionX() + "," + this.getPositionY() + ")";
-            System.out.println("\uD83E\uDDF1 Brick Destroyed: " + getInfo());
+            System.out.println("🧱 Brick Destroyed: " + getInfo());
         }
     }
 
@@ -115,5 +118,17 @@ public class Brick extends GameObject {
     public int getLives() { return lives; }
 
     public void setLives(int lives) { this.lives = lives; }
+
+    /**
+     * Kiểm tra xem brick có cần spawn power-up không.
+     * CHỈ trả về true MỘT LẦN duy nhất.
+     */
+    public boolean shouldSpawnPowerUp() {
+        if (isDestroyed && !powerUpSpawned && !currentBrickType.isUnbreakable()) {
+            powerUpSpawned = true; // Đánh dấu đã spawn
+            return true;
+        }
+        return false;
+    }
 
 }

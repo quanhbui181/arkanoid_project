@@ -24,23 +24,11 @@ public class Constants {
     public static final int BRICK_SPACING = 4;
     public static final String BALL_TEXTURE_PATH = "/images/gameImages/ball.png";
     public static final String PADDLE_TEXTURE_PATH = "/images/gameImages/paddle.png";
-
-    public static final int credits_Layer_POSITION_X = 4;
-    public static final int credits_Layer_POSITION_Y = 33;
-  public static final int credits_Layer_WIDTTH = 186;
-  public static final int credits_Layer_HEIGHT = 33;
-
-  public static final int points_Layer_POSITION_X = 1086;
-  public static final int points_Layer_POSITION_Y = 34;
-
-  public static final int levels_Layer_POSITION_X = 1086;
-  public static final int levels_Layer_POSITION_Y = 633;
-
-  public static final int lifes_Layer_POSITION_X = 1086;
-  public static final int lifes_Layer_POSITION_Y = 801;
-
-  public  static final String CURRENCY = " $";
+    public static final int POWERUP_WIDTH = 79;
+    public static final int POWERUP_HEIGHT = 34;
+    public static final double POWERUP_FALL_SPEED = 200.0;
 
 
+    public static final String CURRENCY = "$";
 
 }
