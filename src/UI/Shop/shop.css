@@ -1,5 +1,5 @@
 .sideBar{
-    -fx-background-color: rgba(0, 0, 0, 0.3);
+    -fx-background-color: rgba(0, 0, 0, 0.4);
 }
 
 .buyButton{
@@ -9,15 +9,6 @@
   -fx-padding : 0;
 }
 
-.buyButton:selected{
-  -fx-opacity: 1.0;
-  -fx-effect: dropshadow(gaussian, #00FFFF, 15, 0.4, 0, 0);
-}
-
-.buyButton:hover{
-  -fx-scale-x : 1.2;
-  -fx-scale-y : 1.2;
-}
 
 .exitToMenu{
   -fx-background-color: transparent;
@@ -71,7 +62,7 @@
 
 
 .skinDisplay{
-  -fx-background-color: rgba(0, 0, 0, 0.4);
+  -fx-background-color: rgba(0, 0, 0, 0.5);
 }
 
 .transparent-scroll{
@@ -113,7 +104,7 @@
   -fx-padding : 0;
 }
 
-.equipButton:hover{
-  -fx-scale-x : 1.2;
-  -fx-scale-y : 1.2;
+.zoom_out:hover{
+  -fx-scale-x : 1.05;
+  -fx-scale-y : 1.05;
 }

@@ -14,7 +14,9 @@ import entities.Brick;
 import entities.Paddle;
 
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.LongProperty;
 import javafx.collections.MapChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -71,6 +74,12 @@ public class GameScene {
     private VBox boxOfCredits;
     @FXML
     private VBox boxOfHighScores;
+    @FXML
+    private Label creditsGameLabel;
+    @FXML
+    private Button pauseButton;
+    @FXML
+    private Button exitButton;
 
 
     public GameScene() {
@@ -242,10 +251,10 @@ public class GameScene {
 
     @FXML
     public void pauseClicked() {
-        SceneManager.getInstance().getSoundManager().play("click");
-        System.out.println("Bấm Pause!");
-        gameLoop.stop();
-        sceneManager.switchTo("Pause");
+          SceneManager.getInstance().getSoundManager().play("click");
+          gameLoop.stop();
+          sceneManager.switchTo("Pause");
+          System.out.println("Bấm Pause!");
     }
 
     @FXML

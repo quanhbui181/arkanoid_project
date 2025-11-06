@@ -54,5 +54,6 @@ public class MenuScene {
   @FXML
   private void onExitClicked(MouseEvent e) {
     System.out.println("Exit clicked!");
+    System.exit(0);
   }
 }

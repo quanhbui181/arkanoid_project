@@ -64,27 +64,21 @@ public class Main extends Application {
         Pane gameOverRoot = gameOverLoader.load();
         sm.addScene("GameOver", new Scene(gameOverRoot));
 
+        FXMLLoader pauseLoader = new FXMLLoader(getClass().getResource("/UI/Pause/PauseScene.fxml"));
+        Pane pauseRoot = pauseLoader.load();
+        sm.addScene("Pause", new Scene(pauseRoot));
+
         FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("/UI/Shop/ShopScene.fxml"));
         Pane shopRoot = shopLoader.load();
 
         ShopScene shopController = shopLoader.getController();
         shopController.initData(this.credits, this.creditManager, this.skinManager);
-
         sm.addScene("Shop", new Scene(shopRoot));
 
+        FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("/UI/Game/GameScene.fxml"));
+        Pane gameRoot = gameLoader.load();
+        sm.addScene("Game", new Scene(gameRoot));
 
-//      FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("/UI/Game/GameScene.fxml"));
-//      Pane gameRoot = gameLoader.load();
-
-//      GameScene gameController = gameLoader.getController();
-//      gameController.initData(this.credits);
-//      sm.addScene("Game", new Scene(gameRoot));
-
-        // chinh ti'
-        primaryStage.setTitle("Anh Jack oi em yeu anh nhieu lam ❤❤❤");
-        primaryStage.setResizable(false);
-        Image appIcon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/icon.jpg")));
-        primaryStage.getIcons().add(appIcon);
 
         // bat dau ne
         sm.switchTo("Menu");

@@ -28,9 +28,9 @@
                <children>
                   <ScrollPane fx:id="paddleScrollPane" prefHeight="200.0" prefWidth="200.0" styleClass="transparent-scroll">
                      <content>
-                        <TilePane fx:id="paddleSkinContain" hgap="45.0" prefHeight="783.0" prefWidth="659.0" styleClass="transparent-scroll" vgap="20.0">
+                        <TilePane fx:id="paddleSkinContain" hgap="65.0" prefHeight="783.0" prefWidth="659.0" styleClass="transparent-scroll" vgap="30.0">
                            <padding>
-                              <Insets right="20.0" top="30.0" />
+                              <Insets left="40.0" top="40.0" />
                            </padding></TilePane>
                      </content>
                   </ScrollPane>
