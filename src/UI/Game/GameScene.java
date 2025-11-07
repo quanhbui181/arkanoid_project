@@ -191,7 +191,6 @@ public class GameScene {
     }
 
     public void start() {
-        reset();
         gameLoop.start();
     }
 
@@ -201,13 +200,15 @@ public class GameScene {
 
     public void reset() {
         SceneManager.getInstance().getSoundManager().play("play");
+        currentLevel = 1;
         gameLoop.setScore(0);
-        ball.reset();
-        paddle.reset();
+        gameLoop.reset();
         brickList.clear();
         gameLoop.getPowerUpManager().reset();
         RenderMap rendermap = new RenderMap();
         rendermap.render(currentLevel, brickList);
+        ball.reset();
+        paddle.reset();
         updateLivesUI();
     }
 
@@ -220,12 +221,12 @@ public class GameScene {
             sceneManager.switchTo("Win");
         } else {
             SceneManager.getInstance().getSoundManager().play("play");
-            ball.reset();
-            paddle.reset();
             brickList.clear();
             gameLoop.getPowerUpManager().reset();
             RenderMap rendermap = new RenderMap();
             rendermap.render(currentLevel, brickList);
+            ball.reset();
+            paddle.reset();
             updateLivesUI();
             gameLoop.start();
         }

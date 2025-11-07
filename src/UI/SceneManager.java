@@ -60,18 +60,19 @@ public class SceneManager {
         return scenes.get(name);
     }
 
-    public void switchTo(String name){
+    public void switchTo(String name) {
         Scene scene = scenes.get(name);
 
-        if(scene == null){
+        if (scene == null) {
             System.out.println("Chưa có màn này: " + name);
             return;
         }
 
-        if ("Game".equals(currentSceneName) && gameSceneInstance != null) {
+        String previousSceneName = this.currentSceneName;
+
+        if ("Game".equals(previousSceneName) && gameSceneInstance != null) {
             System.out.println("Đang rời Game !");
             gameSceneInstance.stop();
-            gameSceneInstance.setCurrentLevel(1);
         }
 
         if (primaryStage != null) {
@@ -81,9 +82,13 @@ public class SceneManager {
 
         if ("Game".equals(name) && gameSceneInstance != null) {
             System.out.println("Đang vào Game !");
+
+            if (!("Pause".equals(previousSceneName))) {
+                gameSceneInstance.reset();
+            }
+
             gameSceneInstance.start();
         }
-
     }
 
     public SoundManager getSoundManager() {

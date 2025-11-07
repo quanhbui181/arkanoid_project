@@ -40,6 +40,8 @@ public class GameLoop extends AnimationTimer {
     private final PowerUpManager powerUpManager;
     private final ArrayList<Ball> ballList;
 
+    private boolean isPaused = false;
+
     // === NEW: Time scale for slow motion ===
     private double timeScale = 1.0; // 1.0 = normal, 0.5 = slow motion
 
@@ -63,6 +65,18 @@ public class GameLoop extends AnimationTimer {
 
     @Override
     public void handle(long now) {
+
+        if (isPaused) {
+            lastTime = now;
+            isPaused = false;
+            return;
+        }
+
+        if (lastTime == 0) {
+            lastTime = now;
+            return;
+        }
+
         gc.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         double secondStandard = 1000000000.0;
         double deltaTime = (now - lastTime) / secondStandard;
@@ -99,6 +113,12 @@ public class GameLoop extends AnimationTimer {
         if (nextLevel) gameScene.goToNextLevel();
 
         render();
+    }
+
+    @Override
+    public void stop() {
+        super.stop();
+        isPaused = true;
     }
 
     private void update(double deltaTime) {
@@ -238,6 +258,10 @@ public class GameLoop extends AnimationTimer {
         return powerUpManager;
     }
 
+    public void setLastTime(long lastTime) {
+        this.lastTime = lastTime;
+    }
+
     // === NEW: Time scale control (for slow motion) ===
     public double getTimeScale() {
         return timeScale;
@@ -246,5 +270,10 @@ public class GameLoop extends AnimationTimer {
     public void setTimeScale(double timeScale) {
         this.timeScale = Math.max(0.1, Math.min(2.0, timeScale)); // Clamp 0.1-2.0
         System.out.println("⏱️ Time scale changed: " + this.timeScale);
+    }
+
+    public void reset() {
+        lastTime = 0;
+        isPaused = false;
     }
 }
