@@ -75,11 +75,6 @@ public class Main extends Application {
         shopController.initData(this.credits, this.creditManager, this.skinManager);
         sm.addScene("Shop", new Scene(shopRoot));
 
-        FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("/UI/Game/GameScene.fxml"));
-        Pane gameRoot = gameLoader.load();
-        sm.addScene("Game", new Scene(gameRoot));
-
-
         // bat dau ne
         sm.switchTo("Menu");
         primaryStage.show();

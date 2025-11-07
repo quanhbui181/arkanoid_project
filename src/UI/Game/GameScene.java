@@ -88,7 +88,7 @@ public class GameScene {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-
+        System.err.println("Check 1");
         Canvas canvas = new Canvas(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         gc = canvas.getGraphicsContext2D();
         RenderMap renderMap = new RenderMap();
@@ -102,9 +102,11 @@ public class GameScene {
         highScore = new HighScore();
         AnchorPane root;
         try {
+            System.err.println("Check 2");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/Game/GameScene.fxml"));
             loader.setController(this);
             root = loader.load();
+            System.err.println("Check 3");
             root.getChildren().add(1, canvas);
         } catch (Exception e) {
             System.err.println(e.getMessage());

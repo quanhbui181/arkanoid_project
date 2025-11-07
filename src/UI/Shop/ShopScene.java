@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -117,7 +118,7 @@ public class ShopScene {
     //Thiet lap danh sach cac skin
     //paddle skins
     paddleSkin.add(new SkinData(1,"/images/shopImages/paddleSkins/defaultPaddle.png",0,ownedSkinIds.contains(1)));
-    paddleSkin.add(new SkinData(2,"/images/shopImages/paddleSkins/redPaddle.png",1000,ownedSkinIds.contains(2)));
+    paddleSkin.add(new SkinData(2,"/images/shopImages/paddleSkins/redPaddle.png",500,ownedSkinIds.contains(2)));
     paddleSkin.add(new SkinData(3, "/images/shopImages/paddleSkins/bluePaddle.png",1500,ownedSkinIds.contains(3)));
     paddleSkin.add(new SkinData(4, "/images/shopImages/paddleSkins/purplePaddle.png",2000,ownedSkinIds.contains(4)));
     paddleSkin.add(new SkinData(5, "/images/shopImages/paddleSkins/greenPaddle.png",2500,ownedSkinIds.contains(5)));

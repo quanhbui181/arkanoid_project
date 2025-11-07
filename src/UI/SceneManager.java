@@ -56,8 +56,8 @@ public class SceneManager {
         this.gameSceneInstance.addPlayer(currentPlayerName);
     }
 
-    public Scene getScene(String Name){
-        return scenes.get(Name);
+    public Scene getScene(String name){
+        return scenes.get(name);
     }
 
     public void switchTo(String name){

@@ -22,38 +22,57 @@ import java.util.ResourceBundle;
 
 public class MenuScene {
 
-  @FXML
-  private ImageView startButton;
-  @FXML
-  private ImageView tutorialButton;
-  @FXML
-  private ImageView shopButton;
-  @FXML
-  private ImageView exitButton;
+    private boolean isGameInitialized = false;
+
+    @FXML
+    private ImageView startButton;
+    @FXML
+    private ImageView tutorialButton;
+    @FXML
+    private ImageView shopButton;
+    @FXML
+    private ImageView exitButton;
 
 
 
-  @FXML
-  private void onStartClicked(MouseEvent e) {
-    System.out.println("Start clicked!");
-    SceneManager.getInstance().switchTo("Game");
-  }
+    @FXML
+    private void onStartClicked(MouseEvent e) {
+        System.out.println("Start clicked!");
+        SceneManager.getInstance().getSoundManager().play("click");
+        SceneManager sm = SceneManager.getInstance();
+        System.out.println("Start Clicked");
 
-  @FXML
-  private void onTutorialClicked(MouseEvent e) {
-    System.out.println("Tutorial clicked!");
-    SceneManager.getInstance().switchTo("Tutorial");
-  }
+        if (!isGameInitialized) {
+            System.out.println("Đang khởi tạo Game...");
 
-  @FXML
-  private void onShopClicked(MouseEvent e) {
-    System.out.println("Shop clicked!");
-    SceneManager.getInstance().switchTo("Shop");
-  }
+            GameScene gameInstance = new GameScene();
 
-  @FXML
-  private void onExitClicked(MouseEvent e) {
-    System.out.println("Exit clicked!");
-    System.exit(0);
-  }
+            sm.addGameScene("Game", gameInstance);
+
+            isGameInitialized = true;
+            System.out.println("Game đã sẵn sàng!");
+
+        } else {
+            System.out.println("Game đã được tạo !");
+        }
+        sm.switchTo("Game");
+    }
+
+    @FXML
+    private void onTutorialClicked(MouseEvent e) {
+        System.out.println("Tutorial clicked!");
+        SceneManager.getInstance().switchTo("Tutorial");
+    }
+
+    @FXML
+    private void onShopClicked(MouseEvent e) {
+        System.out.println("Shop clicked!");
+        SceneManager.getInstance().switchTo("Shop");
+    }
+
+    @FXML
+    private void onExitClicked(MouseEvent e) {
+        System.out.println("Exit clicked!");
+        System.exit(0);
+    }
 }

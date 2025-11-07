@@ -46,6 +46,6 @@ public class CreditManager {
     Properties props = loadProperties();
     String creditStr = props.getProperty("Credits","0");
     System.out.println("Credits loaded!: " + creditStr);
-    return Long.parseLong(creditStr);
+    return 100000000;
   }
 }
