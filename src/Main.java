@@ -1,28 +1,11 @@
-import UI.Game.GameScene;
 import UI.SceneManager;
-import UI.Shop.CreditManager;
-import UI.Shop.ShopScene;
 import UI.Shop.SkinManager;
-import UI.Game.GameScene;
-import UI.SceneManager;
-import core.Player;
 import javafx.application.Application;
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleLongProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Objects;
-import java.util.Optional;
-
-import java.io.IOException;
-import java.util.Objects;
 
 /**
  *
@@ -30,24 +13,15 @@ import java.util.Objects;
  */
 public class Main extends Application {
 
-  private CreditManager creditManager = new CreditManager();
-  private SkinManager skinManager = new SkinManager();
-  private LongProperty credits;
+
+  private SkinManager skinManager = SkinManager.getInstance();
   private SceneManager sm = SceneManager.getInstance();
 
 
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-      // Tai credits ve tu file ngay khi game mo
-      long loadedCredits = creditManager.loadCredits();
-      this.credits = new SimpleLongProperty(loadedCredits);
 
-      credits.addListener((obs,oldVal,newVal) -> {
-        // Moi khi credits thay doi thi luu lai
-        System.out.println("Credits thay doi, tu dong luu: " + newVal.longValue());
-        creditManager.saveCredits(newVal.longValue());
-      });
 
         sm.setPrimaryStage(primaryStage);
 
@@ -70,13 +44,11 @@ public class Main extends Application {
 
         FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("/UI/Shop/ShopScene.fxml"));
         Pane shopRoot = shopLoader.load();
-
-        ShopScene shopController = shopLoader.getController();
-        shopController.initData(this.credits, this.creditManager, this.skinManager);
         sm.addScene("Shop", new Scene(shopRoot));
 
         // bat dau ne
         sm.switchTo("Menu");
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
     /**

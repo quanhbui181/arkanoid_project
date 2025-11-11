@@ -3,8 +3,8 @@ package UI.Game;
 import PowerUpSystem.PowerUpManager;
 import PowerUpSystem.PowerUpType;
 import RenderManager.RenderMap;
+import UI.Shop.CreditsManager;
 import UI.SceneManager;
-import audio.SoundManager;
 import core.GameLoop;
 import core.HighScore;
 import core.InputHandler;
@@ -13,11 +13,7 @@ import entities.Ball;
 import entities.Brick;
 import entities.Paddle;
 
-import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.LongProperty;
-import javafx.collections.MapChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -27,7 +23,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -36,12 +31,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import utils.Constants;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.LongAdder;
 
 public class GameScene {
 
@@ -75,7 +68,7 @@ public class GameScene {
     @FXML
     private VBox boxOfHighScores;
     @FXML
-    private Label creditsGameLabel;
+    private Label creditsLabel;
     @FXML
     private Button pauseButton;
     @FXML
@@ -119,6 +112,7 @@ public class GameScene {
     @FXML
     public void initialize() {
         scoreLabel.textProperty().bind(gameLoop.getScoreProperty().asString("%d"));
+        creditsLabel.textProperty().bind(CreditsManager.getInstance().getCreditsProperty().asString("%d"));
         ActivePowerUpCreditsListener apc = new ActivePowerUpCreditsListener(this);
         powerUpManager.getActivePowerUpCredits().addListener(apc);
         createHighScoreUI();
@@ -229,6 +223,7 @@ public class GameScene {
             paddle.reset();
             updateLivesUI();
             gameLoop.start();
+
         }
     }
 

@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="4.0" prefWidth="0.0" styleClass="zoom_out" stylesheets="@shop.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Shop.itemController">
+<AnchorPane prefHeight="4.0" prefWidth="0.0" styleClass="zoom_out" stylesheets="@shop.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Shop.ItemController">
    <children>
       <ImageView fitHeight="213.0" fitWidth="263.0" pickOnBounds="true" preserveRatio="true" styleClass="zoom_out" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -33,7 +33,7 @@
                   <Insets top="1.0" />
                </VBox.margin>
             </Label>
-            <ImageView fx:id="skinImageView" fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="skinImage" fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="/images/shopImages/paddleSkins/defaultPaddle.png" />
                </image>

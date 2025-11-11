@@ -1,8 +1,8 @@
 package core;
 
+import UI.Shop.CreditsManager;
 import UI.Game.GameScene;
 import UI.SceneManager;
-import audio.SoundManager;
 import entities.Ball;
 import entities.Brick;
 import entities.BrickType;
@@ -138,10 +138,13 @@ public class GameLoop extends AnimationTimer {
                 brick.update(deltaTime);
                 if (brick.getIsDestroyed()) {
                     int newScore = score.get() + 1;
+                    CreditsManager.getInstance().addCredits(10); // Add 10 credits per brick destroyed
                     if (brick.getCurrentBrickType() == BrickType.MEDIUM) {
                         newScore += 2;
+                        CreditsManager.getInstance().addCredits(20);
                     } else if (brick.getCurrentBrickType() == BrickType.HARD) {
                         newScore += 4;
+                        CreditsManager.getInstance().addCredits(50);
                     }
                     score.set(newScore);
                 }

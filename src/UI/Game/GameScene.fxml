@@ -70,7 +70,7 @@
             <Image url="@/levels/General/LIFESKHUNG.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="851.0" fitWidth="890.0" layoutX="194.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="851.0" fitWidth="890.0" layoutX="215.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/levels/lv1/KHUNG_GAME.png" />
          </image>
@@ -92,6 +92,11 @@
         </VBox>
         <VBox fx:id="boxOfHighScores" alignment="TOP_CENTER" layoutX="1084.0" layoutY="158.0" prefHeight="427" prefWidth="187" spacing="20" style="-fx-background: transparent;                            -fx-background-color: transparent;                            -fx-border-color: red;                            -fx-font-family: 'Agency FB';                            -fx-font-size: 20px;                            -fx-font-weight: bold;" AnchorPane.leftAnchor="1084.0" AnchorPane.topAnchor="158.0">
         </VBox>
+      <Label fx:id="creditsLabel" layoutX="43.0" layoutY="494.0" prefHeight="71.0" prefWidth="116.0" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="43.0" />
+         </font>
+      </Label>
 
     </children>
 </AnchorPane>
