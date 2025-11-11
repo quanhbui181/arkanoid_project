@@ -12,72 +12,72 @@
     <children>
         <ImageView fitHeight="930.0" fitWidth="1280.0" preserveRatio="true">
             <image>
-                <Image url="@/levels/lv1/lv1Background.png" />
+                <Image url="/levels/lv1/lv1Background.png" />
             </image>
         </ImageView>
         <ImageView fitHeight="88.0" fitWidth="154.0" layoutX="24.0" layoutY="670.0" onMouseClicked="#pauseClicked" preserveRatio="true">
             <image>
-                <Image url="@/images/gameImages/pause-button.png" />
+                <Image url="/images/gameImages/pause-button.png" />
             </image>
         </ImageView>
         <ImageView fx:id="heart1" fitHeight="40.0" fitWidth="45.0" layoutX="1094.0" layoutY="834.0" preserveRatio="true">
             <image>
-                <Image url="@/images/gameImages/heart.png" />
+                <Image url="/images/gameImages/heart.png" />
             </image>
         </ImageView>
         <ImageView fx:id="heart2" fitHeight="40.0" fitWidth="45.0" layoutX="1154.0" layoutY="834.0" preserveRatio="true">
             <image>
-                <Image url="@/images/gameImages/heart.png" />
+                <Image url="/images/gameImages/heart.png" />
             </image>
         </ImageView>
         <ImageView fx:id="heart3" fitHeight="40.0" fitWidth="45.0" layoutX="1215.0" layoutY="834.0" preserveRatio="true">
             <image>
-                <Image url="@/images/gameImages/heart.png" />
+                <Image url="/images/gameImages/heart.png" />
             </image>
         </ImageView>
         <ImageView fitHeight="88.0" fitWidth="154.0" layoutX="24.0" layoutY="798.0" onMouseClicked="#exitClicked" preserveRatio="true">
             <image>
-                <Image url="@/images/gameImages/exit-button.png" />
+                <Image url="/images/gameImages/exit-button.png" />
             </image>
         </ImageView>
       <ImageView fitHeight="388.0" fitWidth="187.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/levels/General/anouncementKHUNG.png" />
+            <Image url="/levels/General/anouncementKHUNG.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="203.0" fitWidth="187.0" layoutX="7.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/levels/General/creditsKHUNG.png" />
+            <Image url="/levels/General/creditsKHUNG.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="143.0" fitWidth="189.0" layoutX="1084.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/levels/General/pointsKhung.png" />
+            <Image url="/levels/General/pointsKhung.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="451.0" fitWidth="189.0" layoutX="1084.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/levels/General/HIGHESTSCOREkhung.png" />
+            <Image url="/levels/General/HIGHESTSCOREkhung.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="107.0" fitWidth="187.0" layoutX="1084.0" layoutY="639.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/levels/General/LEVELSKHUNG.png" />
+            <Image url="/levels/General/LEVELSKHUNG.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="107.0" fitWidth="187.0" layoutX="1084.0" layoutY="787.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/levels/General/LIFESKHUNG.png" />
+            <Image url="/levels/General/LIFESKHUNG.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="851.0" fitWidth="890.0" layoutX="215.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="851.0" fitWidth="890.0" layoutX="193.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/levels/lv1/KHUNG_GAME.png" />
+            <Image url="/levels/lv1/KHUNG_GAME.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="79.0" fitWidth="457.0" layoutX="412.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/levels/lv1/ARKANOID1.png" />
+            <Image url="/levels/lv1/ARKANOID1.png" />
          </image>
       </ImageView>
       <Label fx:id="levelLabel" layoutX="1160.0" layoutY="674.0" text="01" textFill="WHITE">
@@ -92,9 +92,9 @@
         </VBox>
         <VBox fx:id="boxOfHighScores" alignment="TOP_CENTER" layoutX="1084.0" layoutY="158.0" prefHeight="427" prefWidth="187" spacing="20" style="-fx-background: transparent;                            -fx-background-color: transparent;                            -fx-border-color: red;                            -fx-font-family: 'Agency FB';                            -fx-font-size: 20px;                            -fx-font-weight: bold;" AnchorPane.leftAnchor="1084.0" AnchorPane.topAnchor="158.0">
         </VBox>
-      <Label fx:id="creditsLabel" layoutX="43.0" layoutY="494.0" prefHeight="71.0" prefWidth="116.0" textFill="WHITE">
+      <Label fx:id="creditsLabel" layoutX="37.0" layoutY="478.0" prefHeight="107.0" prefWidth="138.0" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Book Antiqua" size="43.0" />
+            <Font name="Book Antiqua" size="80.0" />
          </font>
       </Label>
 
