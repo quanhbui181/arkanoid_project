@@ -99,7 +99,7 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 
 ## VI. Kết luận
 
-- **Dự án Arkanoid không chỉ là một game giải trí mà còn là minh chứng cho việc áp dụng thành công các nguyên lý Lập trình Hướng Đối tượng vào thực tế. Qua dự án này, nhóm đã nắm vững các khái niệm quan trọng như encapsulation, inheritance, polymorphism và design patterns**.
+- **Dự án Arkanoid không chỉ là một game giải trí mà còn là minh chứng cho việc áp dụng thành công các nguyên lý Lập trình Hướng Đối tượng vào thực tế. Qua dự án này, nhóm đã nắm vững các khái niệm quan trọng như encapsulation, inheritance, polymorphism và một chút design patterns**.
 
 ---
 *Được phát triển bởi Nhóm 11 - Môn Lập trình Hướng Đối tượng*
