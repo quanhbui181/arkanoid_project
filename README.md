@@ -1,6 +1,21 @@
 # Arkanoid: BTL môn Lập trình hướng đối tượng (OOP)
 
-![Game Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/menuImages/title.png?raw=true)
+![Game Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/game.png?raw=true)
+
+![Tutorial Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/tutorial.png?raw=true)
+
+![Shop1 Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/shop.png?raw=true)
+
+![Shop2 Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/shop2.png?raw=true)
+
+![Play Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/play1.png?raw=true)
+
+![Pause Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/pause.png?raw=true)
+
+![Over Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/over.png?raw=true)
+
+![Win Title](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/win.png?raw=true)
+
 
 ## I. Thông tin thành viên
 
@@ -110,7 +125,7 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 | **Hồi phục máu** | +1 mạng cho người chơi | Hiếm |
 | **X2 số điểm** | Nhân đôi điểm hiện có | Rất hiếm |
 
-### ⚠️ **Vật phẩm bất lợi** 
+### ⚠️ **Vật phẩm bất lợi**
 | Vật phẩm | Hiệu ứng | Cảnh báo |
 |----------|----------|----------|
 | **Giảm kích thước thanh đỡ** | Thanh đỡ ngắn hơn 25% | Nguy hiểm |

@@ -48,9 +48,8 @@ public class ShopScene implements Initializable  {
     //Binding credits label
     shopCreditsLabel.textProperty().bind(Bindings.concat("$", creditsManager.getCreditsProperty().asString()));
 
-    //tao listener cho toggle buttons
+    // Create listener for shop button
     shopButtons.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
-      // Neu newToggle == null ( chon lai nut dang chon) -> quay lai oldToggle
       if (newToggle == null){
         if(oldToggle != null){
           oldToggle.setSelected(true);
@@ -58,10 +57,10 @@ public class ShopScene implements Initializable  {
         return;
       }
 
-      //Lay nut vua dc chon
+      // Pick current button
       ToggleButton selectedButton = (ToggleButton) newToggle;
 
-      //Kiem tra xem do la nut nao -> hien thi scrollpane tuong ung
+      // Check button.
       if(selectedButton == paddleButton){
           SceneManager.getInstance().getSoundManager().play("click");
           paddleScrollPane.setVisible(true);

@@ -14,14 +14,18 @@ import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import UI.Game.GameScene;
 
+/**
+ * Scene manager : Singleton
+ *
+ */
 public class SceneManager {
     //object scenemanager duy nhat
     private static SceneManager instance;
 
-    //main stage
+    // Main stage
     private Stage primaryStage;
 
-    // Luu cac scenes gom ten scene va scene
+    // Save (Name_of_scene, Scene)
     private final Map<String, Scene> scenes = new HashMap<>();
 
     private GameScene gameSceneInstance;
@@ -33,8 +37,9 @@ public class SceneManager {
 
     private SceneManager() {
         askForName();
-    } // k cho phep khoi tao obj ben ngoai
+    }
 
+    // Getter and Setter methods.
     public static SceneManager getInstance() {
         if (instance == null) {
             instance = new SceneManager();
@@ -67,6 +72,11 @@ public class SceneManager {
         return gameSceneInstance;
     }
 
+    /**
+     * Switch to another scene.
+     *
+     * @param name name of scene you want to switch.
+     */
     public void switchTo(String name) {
         Scene scene = scenes.get(name);
 
@@ -104,6 +114,12 @@ public class SceneManager {
         }
     }
 
+    /**
+     * Check if player has a valid name ?
+     *
+     * @param name current name.
+     * @return yes / or ? Is it valid ?
+     */
     private boolean isValidName(String name) {
         if (name == null) {
             return false;
@@ -119,6 +135,11 @@ public class SceneManager {
         }
         return true;
     }
+
+    /**
+     * Ask for player name to play.
+     *
+     */
     private void askForName() {
         while (currentPlayerName == null) {
             TextInputDialog dialog = new TextInputDialog();

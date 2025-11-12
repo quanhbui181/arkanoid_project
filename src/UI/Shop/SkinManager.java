@@ -21,7 +21,7 @@ public class SkinManager {
     private final List<SkinData> paddleSkins = new ArrayList<>();
     private final List<SkinData> ballSkins = new ArrayList<>();
 
-    //Skin dang dung
+    //Current skin
     private int selectedPaddleId = 1;
     private int selectedBallId = 1;
 
@@ -39,7 +39,10 @@ public class SkinManager {
         return instance;
     }
 
-    //Khoi tao mac dinh
+    /**
+     * Initialize.
+     *
+     */
     private void initSkins() {
         //Paddle skins
         paddleSkins.add(new SkinData(1, "/images/shopImages/paddleSkins/defaultPaddle.png", 0, true));
@@ -88,7 +91,7 @@ public class SkinManager {
         return null;
     }
 
-    // ---- MUA SKIN ----
+    // ---- BUY SKIN ----
     public boolean buyPaddle(int id) {
         SkinData skin = getSkinById(paddleSkins, id);
         if (skin != null && !skin.isOwned()) {
@@ -122,6 +125,10 @@ public class SkinManager {
         }
     }
 
+    /**
+     * Load list of skins.
+     *
+     */
     private void loadSkins() {
         File file = new File(SKINS_FILE);
         if (!file.exists()) {
@@ -157,6 +164,10 @@ public class SkinManager {
         }
     }
 
+    /**
+     * Save list of skins.
+     *
+     */
     public void saveSkins() {
         List<String> lines = new ArrayList<>();
         boolean found = false;
@@ -201,7 +212,12 @@ public class SkinManager {
         }
     }
 
-    //Method that setOwnedSkins from each line of file
+    /**
+     * Method that setOwnedSkins from each line of file
+     *
+     * @param line line need to write
+     * @param skins current skin
+     */
     private void setOwnedSkinsFromLine(String line, List<SkinData> skins) {
         String[] parts = line.split(":", 2);
         if (parts.length > 1) {
@@ -223,6 +239,12 @@ public class SkinManager {
         }
     }
 
+    /**
+     * Get skin by id
+     *
+     * @param skins skin that owned
+     * @return info of skin
+     */
     private String getOwnedIds(List<SkinData> skins) {
         StringBuilder ids = new StringBuilder();
         for (SkinData skin : skins) {

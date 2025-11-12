@@ -13,9 +13,13 @@ import UI.SceneManager;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+/**
+ * Credits managers : Singleton
+ *
+ */
 public class CreditsManager {
 
-    //object creditManager duy nhat
+    // Just only one credits manager.
     private static CreditsManager instance;
     private final IntegerProperty credits = new SimpleIntegerProperty(0);
     private static final String CREDITS_FILE = "credits.txt";
@@ -23,7 +27,7 @@ public class CreditsManager {
 
   private CreditsManager() {
     loadCredits();
-  } // k cho phep khoi tao obj ben ngoai
+  }
 
   public static CreditsManager getInstance(){
     if(instance == null){
@@ -32,6 +36,10 @@ public class CreditsManager {
     return instance;
   }
 
+    /**
+     * Load credits.
+     *
+     */
     private void loadCredits() {
         try (BufferedReader reader = new BufferedReader(new FileReader(CREDITS_FILE))) {
             String creditsLine;
@@ -50,6 +58,10 @@ public class CreditsManager {
         }
     }
 
+    /**
+     * Save credits.
+     *
+     */
     public void saveCredits() {
         List<String> lines = new ArrayList<String>();
         boolean found = false;
@@ -85,14 +97,23 @@ public class CreditsManager {
         }
     }
 
-    // add credits
+    /**
+     * Add credits
+     *
+     * @param amount amount of credits
+     */
     public void addCredits(int amount){
         int newCredits = getCredits() + amount;
         credits.set(newCredits);
         saveCredits();
     }
 
-  //spend credits
+    /**
+     * Spend credits
+     *
+     * @param amount amount of credits
+     * @return yes or no ? Can you buy it ??
+     */
   public boolean spendCredits(int amount){ //Only spend if enough credits
     if(getCredits() >= amount){
       int newCredits = getCredits() - amount;
@@ -100,17 +121,17 @@ public class CreditsManager {
       saveCredits();
       return true;
     }
-    return false; // khong du credit
+    return false;
   }
 
 
+  // Getter and Setter methods.
   public int getCredits(){
     return credits.get();
   }
 
   public void setCredits(int amount){
     credits.set(amount);
-    // saveCredits();
   }
 
   public IntegerProperty getCreditsProperty(){
