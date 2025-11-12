@@ -51,6 +51,12 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 - Game Loop (vòng lặp game)
 - Game Scene (quản lý màn chơi)
 
+---
+
+## **UML Diagram**
+![UML Diagram](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/Akanoi%20UML.png)
+
+
 ## IV. Bộ sưu tập Skin
 
 #### 🎱 Skin Bóng
