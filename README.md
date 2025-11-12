@@ -49,13 +49,13 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 - Shop System (hệ thống cửa hàng)
 - Scene System (hệ thống màn hình)
 
-### **Nguyễn Đạt**
+### **Nguyễn Tuấn Đạt**
 - Codebase
 - Sound Manager (quản lý âm thanh)
 - JUnit Test (kiểm thử)
 - Map Renderer (hiển thị bản đồ)
 
-### **Quang Anh**
+### **Bùi Quang Anh**
 - UI Components
 - Power-up System (hệ thống vật phẩm)
 - Game Loop (vòng lặp game)
