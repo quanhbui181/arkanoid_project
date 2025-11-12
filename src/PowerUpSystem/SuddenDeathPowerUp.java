@@ -20,12 +20,10 @@ public class SuddenDeathPowerUp extends InstantPowerUp {
 
         // Kill main ball
         mainBall.setLives(0);
-        mainBall.play = false;
 
         // Kill all extra balls
         for (Ball extraBall : ballList) {
             extraBall.setLives(0);
-            extraBall.play = false;
         }
 
         System.out.println("💀 SUDDEN DEATH! Game Over...");

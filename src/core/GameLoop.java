@@ -85,14 +85,13 @@ public class GameLoop extends AnimationTimer {
         // === NEW: Apply time scale (for slow motion) ===
         double scaledDeltaTime = deltaTime * timeScale;
 
-        update(scaledDeltaTime);
-
         gc.setStroke(Color.CRIMSON);
         gc.setLineWidth(2);
-        gc.strokeRect(Constants.MARGIN_WIDTH, Constants.MARGIN_HEIGHT,
-                Constants.PLAY_SCREEN_WIDTH, Constants.PLAY_SCREEN_HEIGHT);
+        gc.strokeRect(Constants.MARGIN_WIDTH, Constants.MARGIN_HEIGHT, Constants.PLAY_SCREEN_WIDTH, Constants.PLAY_SCREEN_HEIGHT);
 
         gameScene.updateLivesUI();
+
+        update(scaledDeltaTime);
 
         // GAME OVER: Main ball out of lives AND no extra balls
         if (ball.getLives() <= 0 && ballList.isEmpty()) {
@@ -110,7 +109,9 @@ public class GameLoop extends AnimationTimer {
                 break;
             }
         }
-        if (nextLevel) gameScene.goToNextLevel();
+        if (nextLevel) {
+            gameScene.goToNextLevel();
+        }
 
         render();
     }
@@ -198,6 +199,7 @@ public class GameLoop extends AnimationTimer {
                 System.out.println("⚽ Ball respawned! Lives remaining: " + ball.getLives());
             } else {
                 System.out.println("💀 Game Over!");
+                return;
             }
         }
 
@@ -233,9 +235,6 @@ public class GameLoop extends AnimationTimer {
         if (ball.getLives() > 0) {
             ball.render(gc);
         }
-
-        paddle.render(gc);
-
         for (Brick brick : brickList) {
             brick.render(gc);
         }
@@ -244,7 +243,7 @@ public class GameLoop extends AnimationTimer {
         for (Ball extraBall : ballList) {
             extraBall.render(gc);
         }
-
+        paddle.render(gc);
         // Render power-ups
         powerUpManager.render(gc);
     }
@@ -282,6 +281,9 @@ public class GameLoop extends AnimationTimer {
     }
 
     public void reset() {
+        input.reset();
+        ballList.clear();
+        powerUpManager.reset();
         lastTime = 0;
         isPaused = false;
     }

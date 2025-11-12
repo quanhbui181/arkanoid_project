@@ -211,7 +211,6 @@ public class GameScene {
         gameLoop.setScore(0);
         gameLoop.reset();
         brickList.clear();
-        gameLoop.getPowerUpManager().reset();
         ball.reset();
         paddle.reset();
         renderMap();
@@ -226,14 +225,14 @@ public class GameScene {
             System.out.println("thang me may roi");
             sceneManager.switchTo("Win");
         } else {
+            gameLoop.reset();
             brickList.clear();
-            gameLoop.getPowerUpManager().reset();
             ball.reset();
             paddle.reset();
             updateLivesUI();
             updateUI();
             renderMap();
-            gameLoop.start();
+            start();
         }
     }
 

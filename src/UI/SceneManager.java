@@ -68,6 +68,10 @@ public class SceneManager {
         return currentPlayerName;
     }
 
+    public GameScene getGameSceneInstance() {
+        return gameSceneInstance;
+    }
+
     public void switchTo(String name) {
         Scene scene = scenes.get(name);
 

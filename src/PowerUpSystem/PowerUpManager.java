@@ -38,7 +38,7 @@ public class PowerUpManager {
     private final Random random;
 
     // ===== CONFIGURATION =====
-    private double spawnChance = 0.3;
+    private double spawnChance = 0.5;
 
     // ===== CONSTRUCTOR =====
 

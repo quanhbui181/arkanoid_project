@@ -2,8 +2,6 @@ package UI.Pause;
 
 import UI.SceneManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 
 public class PauseScene {
 
@@ -16,6 +14,7 @@ public class PauseScene {
 
   @FXML
   public void onQuitClicked() {
+      SceneManager.getInstance().getGameSceneInstance().updateHighScores();
       System.out.println("Quit clicked!");
       SceneManager.getInstance().getSoundManager().play("click");
       SceneManager.getInstance().switchTo("Menu");
