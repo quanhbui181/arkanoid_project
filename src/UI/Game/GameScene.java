@@ -272,6 +272,7 @@ public class GameScene {
         ++ currentLevel;
         if (currentLevel > Constants.MAX_LEVEL) {
             System.out.println("Win roi em oi");
+            sceneManager.getSoundManager().play("win");
             sceneManager.switchTo("Win");
         } else {
             gameLoop.reset();

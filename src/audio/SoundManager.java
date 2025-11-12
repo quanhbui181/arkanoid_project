@@ -22,6 +22,7 @@ public class SoundManager {
         addSound("power", "/sound/collect (2).wav");
         addSound("play", "/sound/play-game.wav");
         addSound("click", "/sound/click (1).wav");
+        addSound("win", "/sound/win.wav");
     }
 
     /**

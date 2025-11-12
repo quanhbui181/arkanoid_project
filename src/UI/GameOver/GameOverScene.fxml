@@ -25,7 +25,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="playAgainButton" contentDisplay="GRAPHIC_ONLY" layoutX="522.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#restartGame" styleClass="gameoverButton">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="522.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#restartGame" styleClass="gameoverButton">
          <graphic>
             <ImageView fitHeight="52.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
                <image>
