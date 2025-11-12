@@ -55,9 +55,9 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 
 #### 🎱 Skin Bóng
 <div align="center">
-  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin.png?raw=true" width="100" style="margin:5px;">
-  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin4.png?raw=true" width="100" style="margin:5px;">
-  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin6.png?raw=true" width="100" style="margin:5px;">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin.png?raw=true" width="80" style="margin:5px;">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin4.png?raw=true" width="80" style="margin:5px;">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin6.png?raw=true" width="80" style="margin:5px;">
 </div>
 
 #### 🛹 Skin Thanh Đỡ
