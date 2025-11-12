@@ -95,7 +95,7 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 | **Giảm kích thước thanh đỡ** | Thanh đỡ ngắn hơn 25% | Nguy hiểm |
 | **Tăng tốc độ bóng** | Bóng nhanh hơn 40% | Rất nguy hiểm |
 | **Giảm tốc độ toàn bộ** | Giảm tốc thanh đỡ, bóng và thời gian hiệu ứng | Cảnh báo |
-| **Chết ngay lập tức** | Mất ngay 1 mạng | CỰC KỲ NGUY HIỂM |
+| **Chết ngay lập tức** | Chết ngay lập tức | CỰC KỲ NGUY HIỂM |
 
 ## VI. Kết luận
 
