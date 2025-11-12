@@ -1,15 +1,11 @@
 package core;
 
-import com.sun.tools.javac.Main;
-
 import java.io.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static java.lang.Math.max;
 
 /**
  * Manage high scores list of game.

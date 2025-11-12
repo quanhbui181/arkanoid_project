@@ -105,9 +105,11 @@ public class GameLoop extends AnimationTimer {
         // Apply timescale (for slow motion)
         double scaledDeltaTime = deltaTime * timeScale;
 
+        /*
         gc.setStroke(Color.CRIMSON);
         gc.setLineWidth(2);
         gc.strokeRect(Constants.MARGIN_WIDTH, Constants.MARGIN_HEIGHT, Constants.PLAY_SCREEN_WIDTH, Constants.PLAY_SCREEN_HEIGHT);
+        */
 
         gameScene.updateLivesUI();
 

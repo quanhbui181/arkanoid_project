@@ -15,17 +15,18 @@ public class Constants {
     public static final double BALL_START_POSITION_X = (SCREEN_WIDTH - BALL_RADIUS * 2) / 2.0; // Default ball spawn positionX.
     public static final double BALL_START_POSITION_Y = SCREEN_HEIGHT - (BALL_RADIUS * 2) - 300; // Default ball spawn positionY.
     public static final double EPSILON = 1e-18; // Calculating errors in real number operations.
-    public static final int MARGIN_WIDTH = 200;
-    public static  final int MARGIN_HEIGHT = 80;
-    public static final int PLAY_SCREEN_WIDTH = SCREEN_WIDTH - 2 * MARGIN_WIDTH;
-    public static final int PLAY_SCREEN_HEIGHT = SCREEN_HEIGHT - MARGIN_HEIGHT;
-    public static final int BRICK_WIDTH = 69;
-    public static final int BRICK_HEIGHT = 37;
-    public static final int BRICK_SPACING = 4;
+    public static final int MARGIN_WIDTH = 200; // Spacing from left side.
+    public static  final int MARGIN_HEIGHT = 80; // Spacing from top side.
+    public static final int PLAY_SCREEN_WIDTH = SCREEN_WIDTH - 2 * MARGIN_WIDTH; // Game screen width.
+    public static final int PLAY_SCREEN_HEIGHT = SCREEN_HEIGHT - MARGIN_HEIGHT; // Game screen height.
+    public static final int BRICK_WIDTH = 69; // Default brick width.
+    public static final int BRICK_HEIGHT = 37; // Default brick height.
+    public static final int BRICK_SPACING = 4; // Default brick spacing.
     public static final String BALL_TEXTURE_PATH = "/images/gameImages/ball.png";
     public static final String PADDLE_TEXTURE_PATH = "/images/gameImages/paddle.png";
     public static final int POWERUP_WIDTH = 79;
     public static final int POWERUP_HEIGHT = 34;
     public static final double POWERUP_FALL_SPEED = 200.0;
+    public static final int MAX_LEVEL = 15; // Maximum level of game.
 
 }

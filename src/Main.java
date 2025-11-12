@@ -41,6 +41,10 @@ public class Main extends Application {
         Pane shopRoot = shopLoader.load();
         sm.addScene("Shop", new Scene(shopRoot));
 
+        FXMLLoader winLoader = new FXMLLoader(getClass().getResource("/UI/Win/WinScene.fxml"));
+        Pane winRoot = winLoader.load();
+        sm.addScene("Win", new Scene(winRoot));
+
         // bat dau ne
         sm.switchTo("Menu");
         primaryStage.setResizable(false);

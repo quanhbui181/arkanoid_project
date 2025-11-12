@@ -70,7 +70,7 @@
             <Image url="/levels/General/LIFESKHUNG.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="frameImageView" fitHeight="851.0" fitWidth="890.0" layoutX="193.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="frameImageView" fitHeight="851.0" fitWidth="895.0" layoutX="196.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/levels/lv1/KHUNG1.png" />
          </image>

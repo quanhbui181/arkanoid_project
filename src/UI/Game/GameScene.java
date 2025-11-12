@@ -270,9 +270,8 @@ public class GameScene {
     public void goToNextLevel() {
         gameLoop.stop();
         ++ currentLevel;
-        final int MAX_LEVEL = 10;
-        if (currentLevel > MAX_LEVEL) {
-            System.out.println("thang me may roi");
+        if (currentLevel > Constants.MAX_LEVEL) {
+            System.out.println("Win roi em oi");
             sceneManager.switchTo("Win");
         } else {
             gameLoop.reset();
