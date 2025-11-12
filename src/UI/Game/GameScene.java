@@ -49,7 +49,7 @@ public class GameScene {
     private final Paddle paddle;
     private final ArrayList<Brick> brickList;
     private final GraphicsContext gc;
-    private int currentLevel = 9;
+    private int currentLevel = 1;
 
 
     private final PowerUpManager powerUpManager;
