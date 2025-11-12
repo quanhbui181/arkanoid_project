@@ -6,8 +6,8 @@
 
 **Thành viên nhóm 11:**
 - **Nguyễn Hoàng Hải (K69I-IS1)**.
-- **Nguyễn Đạt (K69I-IS1)**.
-- **Quang Anh (K69I-IS1)**.
+- **Nguyễn Tuấn Đạt (K69I-IS1)**.
+- **Bùi Quang Anh (K69I-IS1)**.
 - **Nguyễn Đức Khiêm (K69I-CS1)**.
 
 ## II. Giới thiệu dự án
