@@ -58,6 +58,11 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
   <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin.png?raw=true">
   <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin4.png?raw=true">
   <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin6.png?raw=true">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin2.png?raw=true">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin8.png?raw=true">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin5.png?raw=true">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin3.png?raw=true">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin7.png?raw=true">
 </div>
 
 #### 🛹 Skin Thanh Đỡ
@@ -65,6 +70,9 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
   <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/greenPaddle.png?raw=true">
   <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/purplePaddle.png?raw=true">
   <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/bluePaddle.png?raw=true">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/redPaddle.png?raw=true">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/orangePaddle.png?raw=true">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/pinkPaddle.png?raw=true">
 </div>
 
 ## V. Hướng dẫn chơi game
