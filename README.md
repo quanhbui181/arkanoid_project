@@ -52,21 +52,15 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 - Game Scene (quản lý màn chơi)
 
 ### **UML Diagram**
-[![UML Diagram](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/Akanoi%20UML.png)](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/Akanoi%20UML.png)
+![UML Diagram](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/Akanoi%20UML.png)
 
 ### **Tổ chức code**
-
 <p align="center">
-  <a href="https://raw.githubusercontent.com/Group8-OOPProject/ARKANOID_PROJECT/main/resources/1.png">
-    <img src="https://raw.githubusercontent.com/Group8-OOPProject/ARKANOID_PROJECT/main/resources/1.png" width="30%" />
-  </a>
-  <a href="https://raw.githubusercontent.com/Group8-OOPProject/ARKANOID_PROJECT/main/resources/2.png">
-    <img src="https://raw.githubusercontent.com/Group8-OOPProject/ARKANOID_PROJECT/main/resources/2.png" width="30%" />
-  </a>
-  <a href="https://raw.githubusercontent.com/Group8-OOPProject/ARKANOID_PROJECT/main/resources/3.png">
-    <img src="https://raw.githubusercontent.com/Group8-OOPProject/ARKANOID_PROJECT/main/resources/3.png" width="30%" />
-  </a>
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/1.png" width="30%" />
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/2.png" width="30%" />
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/3.png" width="30%" />
 </p>
+
 
 ## IV. Bộ sưu tập Skin
 
