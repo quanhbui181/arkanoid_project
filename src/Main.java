@@ -46,7 +46,7 @@ public class Main extends Application {
         sm.addScene("Win", new Scene(winRoot));
 
         // bat dau ne
-        sm.switchTo("Win");
+        sm.switchTo("Menu");
         primaryStage.setResizable(false);
         primaryStage.show();
     }
