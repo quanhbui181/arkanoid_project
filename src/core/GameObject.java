@@ -75,7 +75,7 @@ public abstract class GameObject {
      */
     public abstract void render(GraphicsContext gc);
 
-    // Getter and Setter method.
+    // Getter and Setter methods.
 
     public double getPositionX() { return positionX; }
 

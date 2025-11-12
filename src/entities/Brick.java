@@ -109,21 +109,33 @@ public class Brick extends GameObject {
 
     //Getter and Setter method.
 
-    public boolean getIsDestroyed() { return isDestroyed; }
+    public boolean getIsDestroyed() {
+        return isDestroyed;
+    }
 
-    public void setIsDestroyed(boolean isDestroyed) { this.isDestroyed = isDestroyed; }
+    public void setIsDestroyed(boolean isDestroyed) {
+        this.isDestroyed = isDestroyed;
+    }
 
-    public BrickType getCurrentBrickType() { return currentBrickType; }
+    public BrickType getCurrentBrickType() {
+        return currentBrickType;
+    }
 
-    public void setCurrentBrickType(BrickType currentBrickType) { this.currentBrickType = currentBrickType; }
+    public void setCurrentBrickType(BrickType currentBrickType) {
+        this.currentBrickType = currentBrickType; }
 
-    public int getLives() { return lives; }
+    public int getLives() {
+        return lives;
+    }
 
-    public void setLives(int lives) { this.lives = lives; }
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
 
     /**
-     * Kiểm tra xem brick có cần spawn power-up không.
-     * CHỈ trả về true MỘT LẦN duy nhất.
+     * Check if the brick needs to spawn power-ups.
+     * Returns true ONLY ONCE.
+     *
      */
     public boolean shouldSpawnPowerUp() {
         if (isDestroyed && !powerUpSpawned && !currentBrickType.isUnbreakable()) {

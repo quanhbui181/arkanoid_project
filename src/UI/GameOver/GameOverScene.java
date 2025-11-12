@@ -7,13 +7,13 @@ import javafx.fxml.FXML;
 public class GameOverScene {
 
     @FXML
-    public void ExitToMenu(){
+    private void ExitToMenu(){
         SceneManager.getInstance().getSoundManager().play("click");
         SceneManager.getInstance().switchTo("Menu");
     }
 
     @FXML
-    public void restartGame(){
+    private void restartGame(){
         SceneManager.getInstance().getSoundManager().play("click");
         SceneManager.getInstance().switchTo("Game");
     }

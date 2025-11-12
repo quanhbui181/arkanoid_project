@@ -7,15 +7,29 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+/**
+ * Map Renderer.
+ *
+ */
 public class RenderMap {
 
     private final String startPath = "src/RenderManager/MapList/";
     private final String endPath = ".txt";
 
+    /**
+     * Initialize map renderer.
+     *
+     */
     public RenderMap() {
         System.out.println("\uD83D\uDDFA Map Renderer Init Success !");
     }
 
+    /**
+     * Render map with level.
+     *
+     * @param level current level.
+     * @param brickList current list of bricks.
+     */
     public void render(int level, ArrayList<Brick> brickList) {
         brickList.clear(); // Remove all past level list of bricks.
         StringBuilder path = new StringBuilder(startPath);

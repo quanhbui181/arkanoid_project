@@ -27,6 +27,5 @@ public class Constants {
     public static final int POWERUP_WIDTH = 79;
     public static final int POWERUP_HEIGHT = 34;
     public static final double POWERUP_FALL_SPEED = 200.0;
-    public static final String CURRENCY = "$";
 
 }

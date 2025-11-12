@@ -130,31 +130,59 @@ public class Ball extends MovableObject {
     }
 
     // Getters and Setters
-    public double getSpeed() { return speed; }
+    public double getSpeed() {
+        return speed;
+    }
 
-    public void setSpeed(double speed) { this.speed = speed; }
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 
-    public int getRadius() { return radius; }
+    public int getRadius() {
+        return radius;
+    }
 
-    public void setRadius(int radius) { this.radius = radius; }
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
 
-    public double getDirectionX() { return directionX; }
+    public double getDirectionX() {
+        return directionX;
+    }
 
-    public void setDirectionX(double directionX) { this.directionX = directionX; }
+    public void setDirectionX(double directionX) {
+        this.directionX = directionX;
+    }
 
-    public double getDirectionY() { return directionY; }
+    public double getDirectionY() {
+        return directionY;
+    }
 
-    public void setDirectionY(double directionY) { this.directionY = directionY; }
+    public void setDirectionY(double directionY) {
+        this.directionY = directionY;
+    }
 
-    public boolean isOver() { return isOver; }
+    public boolean isOver() {
+        return isOver;
+    }
 
-    public void setOver(boolean isOver) { this.isOver = isOver; }
+    public void setOver(boolean isOver) {
+        this.isOver = isOver;
+    }
 
-    public int getLives() { return lives; }
+    public int getLives() {
+        return lives;
+    }
 
-    public void setLives(int lives) { this.lives = lives; }
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
 
-    // NEW: Getter/Setter for main ball flag
-    public boolean isMainBall() { return isMainBall; }
-    public void setMainBall(boolean mainBall) { isMainBall = mainBall; }
+    public boolean isMainBall() {
+        return isMainBall;
+    }
+
+    public void setMainBall(boolean mainBall) {
+        isMainBall = mainBall;
+    }
 }

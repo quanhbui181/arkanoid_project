@@ -27,15 +27,6 @@ public class MenuScene {
     private boolean isGameInitialized = false;
 
     @FXML
-    private ImageView startButton;
-    @FXML
-    private ImageView tutorialButton;
-    @FXML
-    private ImageView shopButton;
-    @FXML
-    private ImageView exitButton;
-
-    @FXML
     private void onStartClicked(MouseEvent e) {
         System.out.println("Start clicked!");
         SceneManager.getInstance().getSoundManager().play("click");

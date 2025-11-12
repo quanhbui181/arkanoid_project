@@ -21,11 +21,12 @@ import PowerUpSystem.PowerUpManager;
 import java.util.Iterator;
 
 /**
- * Game loop with multi-ball lives logic and time scale support.
- * UPDATED: Added timeScale for SlowMotion power-up
+ * Game loop with multi-ball lives logic and timescale support.
+ *
  */
 public class GameLoop extends AnimationTimer {
 
+    // Something important.
     private final SceneManager sceneManager;
     private final GameScene gameScene;
 
@@ -37,14 +38,28 @@ public class GameLoop extends AnimationTimer {
     private long lastTime = 0;
     private final IntegerProperty score = new SimpleIntegerProperty(0);
 
-    private final PowerUpManager powerUpManager;
-    private final ArrayList<Ball> ballList;
+    private final PowerUpManager powerUpManager; // Manage power-up system.
 
-    private boolean isPaused = false;
+    private final ArrayList<Ball> ballList; // Manage all ball exits.
 
-    // === NEW: Time scale for slow motion ===
-    private double timeScale = 1.0; // 1.0 = normal, 0.5 = slow motion
+    private boolean isPaused = false; // Is player pressed pause ?
 
+    // Timescale for slow motion
+    private double timeScale = 1.0; // 1.0 = normal, 0.5 = slow motion.
+
+    /**
+     * Initialize game-loop with everything game need.
+     *
+     * @param ball ball in game.
+     * @param paddle paddle in game.
+     * @param brickList all brick of current level's map.
+     * @param gc graphic context to draw.
+     * @param input input handler for keyboard event listen.
+     * @param sceneManager boss of all scene.
+     * @param gameScene game scene manage this game loop.
+     * @param powerUpManager just a power-up manager.
+     * @param ballList all ball exits (it can exist when you take power-up).
+     */
     public GameLoop(Ball ball, Paddle paddle, ArrayList<Brick> brickList, GraphicsContext gc,
                     InputHandler input, SceneManager sceneManager, GameScene gameScene,
                     PowerUpManager powerUpManager, ArrayList<Ball> ballList) {
@@ -58,11 +73,14 @@ public class GameLoop extends AnimationTimer {
         this.ballList = ballList;
         this.powerUpManager = powerUpManager;
         lastTime = 0;
-
-        // === NEW: Set GameLoop reference in PowerUpManager ===
         powerUpManager.setGameLoop(this);
     }
 
+    /**
+     * Game loop run...
+     *
+     * @param now update time right now (nanosecond).
+     */
     @Override
     public void handle(long now) {
 
@@ -78,11 +96,13 @@ public class GameLoop extends AnimationTimer {
         }
 
         gc.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+
+        // Normalize nanosecond to second.
         double secondStandard = 1000000000.0;
         double deltaTime = (now - lastTime) / secondStandard;
         lastTime = now;
 
-        // === NEW: Apply time scale (for slow motion) ===
+        // Apply timescale (for slow motion)
         double scaledDeltaTime = deltaTime * timeScale;
 
         gc.setStroke(Color.CRIMSON);
@@ -97,7 +117,7 @@ public class GameLoop extends AnimationTimer {
         if (ball.getLives() <= 0 && ballList.isEmpty()) {
             sceneManager.switchTo("GameOver");
             this.stop();
-            gameScene.updateHighScores();
+            gameScene.updateHighScore();
             return;
         }
 
@@ -116,12 +136,21 @@ public class GameLoop extends AnimationTimer {
         render();
     }
 
+    /**
+     * Just stop game.
+     *
+     */
     @Override
     public void stop() {
         super.stop();
         isPaused = true;
     }
 
+    /**
+     * Update every object by delta time.
+     *
+     * @param deltaTime time difference between two frames.
+     */
     private void update(double deltaTime) {
         paddle.setKeyPressed(KeyCode.LEFT, input.isLeftPressed());
         paddle.setKeyPressed(KeyCode.RIGHT, input.isRightPressed());
@@ -162,7 +191,7 @@ public class GameLoop extends AnimationTimer {
             }
         }
 
-        // Update main ball (if has lives)
+        // Update main ball (if it has lives)
         if (ball.getLives() > 0) {
             ball.update(deltaTime);
         }
@@ -209,6 +238,10 @@ public class GameLoop extends AnimationTimer {
         checkCollision();
     }
 
+    /**
+     * Check collision between every 2 objects.
+     *
+     */
     private void checkCollision() {
         // Main ball collisions (only if has lives)
         if (ball.getLives() > 0) {
@@ -230,8 +263,12 @@ public class GameLoop extends AnimationTimer {
         powerUpManager.checkCollision(paddle);
     }
 
+    /**
+     * Render texture for everything.
+     *
+     */
     private void render() {
-        // Render main ball (only if has lives)
+        // Render main ball (only if it has lives)
         if (ball.getLives() > 0) {
             ball.render(gc);
         }
@@ -248,7 +285,7 @@ public class GameLoop extends AnimationTimer {
         powerUpManager.render(gc);
     }
 
-    // === Getters and Setters ===
+    // Getter and Setter methods.
 
     public void setScore(int value) {
         score.set(value);
@@ -270,16 +307,24 @@ public class GameLoop extends AnimationTimer {
         this.lastTime = lastTime;
     }
 
-    // === NEW: Time scale control (for slow motion) ===
     public double getTimeScale() {
         return timeScale;
     }
 
+    /**
+     * Set timescale by input.
+     *
+     * @param timeScale timescale do you want ?
+     */
     public void setTimeScale(double timeScale) {
         this.timeScale = Math.max(0.1, Math.min(2.0, timeScale)); // Clamp 0.1-2.0
         System.out.println("⏱️ Time scale changed: " + this.timeScale);
     }
 
+    /**
+     * Reset everything to the first time.
+     *
+     */
     public void reset() {
         input.reset();
         ballList.clear();

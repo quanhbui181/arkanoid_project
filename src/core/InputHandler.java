@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * Handles keyboard and mouse input for the game.
  *
- * <p>This class listens for key presses (LEFT, RIGHT, SPACE) and mouse actions.
+ * This class listens for key presses (LEFT, RIGHT, SPACE) and mouse actions.
  * It stores input states so the game logic can easily query them each frame.
  */
 public class InputHandler {
@@ -27,7 +27,7 @@ public class InputHandler {
     /**
      * Registers input listeners for keyboard and mouse on the given Scene.
      *
-     * <p>This should be called once when initializing the scene (e.g., before starting the game loop).
+     * This should be called once when initializing the scene (e.g., before starting the game loop).
      *
      * @param scene the JavaFX Scene where events will be captured
      */
@@ -130,7 +130,7 @@ public class InputHandler {
     /**
      * Consumes a single mouse click event.
      *
-     * <p>Returns true only once per actual click, then resets the flag.
+     * Returns true only once per actual click, then resets the flag.
      *
      * @return true if a click occurred since last check, otherwise false
      */
@@ -145,7 +145,7 @@ public class InputHandler {
     /**
      * Resets all input states to false.
      *
-     * <p>Useful when restarting the game or changing scenes.
+     * Useful when restarting the game or changing scenes.
      */
     public void reset() {
         leftPressed = false;

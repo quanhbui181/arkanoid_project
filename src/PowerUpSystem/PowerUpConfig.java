@@ -32,6 +32,4 @@ public class PowerUpConfig {
     public static final int MULTI_BALL_COUNT = 2;
     public static final double MULTI_BALL_ANGLE_OFFSET = Math.PI / 6; // 30 degrees
 
-    // Prevent instantiation
-    private PowerUpConfig() {}
 }

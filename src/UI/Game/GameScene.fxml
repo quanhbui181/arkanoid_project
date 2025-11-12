@@ -104,7 +104,7 @@
                           -fx-text-fill: white;
                           -fx-font-weight: bold;" />
         </StackPane>
-        <VBox fx:id="boxOfCredits"
+        <VBox fx:id="boxOfPowerUp"
               AnchorPane.topAnchor="50"
               AnchorPane.leftAnchor="4.0"
               prefWidth="187"

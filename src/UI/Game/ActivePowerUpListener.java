@@ -5,11 +5,11 @@ import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.collections.MapChangeListener;
 
-public class ActivePowerUpCreditsListener implements MapChangeListener<PowerUpType, DoubleProperty> {
+public class ActivePowerUpListener implements MapChangeListener<PowerUpType, DoubleProperty> {
 
     private final GameScene gameScene;
 
-    public ActivePowerUpCreditsListener(GameScene gameScene) {
+    public ActivePowerUpListener(GameScene gameScene) {
         this.gameScene = gameScene;
     }
 
@@ -17,9 +17,9 @@ public class ActivePowerUpCreditsListener implements MapChangeListener<PowerUpTy
     public void onChanged(Change<? extends PowerUpType, ? extends DoubleProperty> change) {
         Platform.runLater(() -> {
             if (change.wasAdded()) {
-                gameScene.createPowerUpCreditsUI(change.getKey(), change.getValueAdded());
+                gameScene.createPowerUpUI(change.getKey(), change.getValueAdded());
             } else if (change.wasRemoved()) {
-                gameScene.removePowerUpCreditsUI(change.getKey());
+                gameScene.removePowerUpUI(change.getKey());
             }
         });
     }

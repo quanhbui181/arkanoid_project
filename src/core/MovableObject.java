@@ -3,7 +3,7 @@ package core;
 import javafx.scene.image.Image;
 
 /**
- * Moving object management.
+ * Moving object manager.
  *
  */
 public abstract class MovableObject extends GameObject{

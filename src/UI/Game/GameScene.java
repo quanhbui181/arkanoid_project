@@ -53,7 +53,7 @@ public class GameScene {
 
 
     private final PowerUpManager powerUpManager;
-    private final Map<PowerUpType, Node> powerUpUIMap = new HashMap<>();
+    private final HashMap<PowerUpType, Node> powerUpUIMap = new HashMap<>();
     private final HighScore highScore;
     private final String currentPlayerName = sceneManager.getCurrentPlayerName();
 
@@ -68,15 +68,11 @@ public class GameScene {
     @FXML
     private Label levelLabel;
     @FXML
-    private VBox boxOfCredits;
+    private VBox boxOfPowerUp;
     @FXML
     private VBox boxOfHighScores;
     @FXML
     private Label creditsLabel;
-    @FXML
-    private Button pauseButton;
-    @FXML
-    private Button exitButton;
     @FXML
     private ImageView backgroundImageView;
     @FXML
@@ -85,6 +81,10 @@ public class GameScene {
     private ImageView frameImageView;
 
 
+    /**
+     * Initialize game scene.
+     *
+     */
     public GameScene() {
         try {
             Font.loadFont(getClass().getResourceAsStream("/fonts/AGENCYB.TTF"), 1);
@@ -115,15 +115,23 @@ public class GameScene {
         input.getKey(scene);
     }
 
+    /**
+     * Initialize fxml.
+     *
+     */
     @FXML
     public void initialize() {
         scoreLabel.textProperty().bind(gameLoop.getScoreProperty().asString("%d"));
         creditsLabel.textProperty().bind(CreditsManager.getInstance().getCreditsProperty().asString("%d"));
-        ActivePowerUpCreditsListener apc = new ActivePowerUpCreditsListener(this);
+        ActivePowerUpListener apc = new ActivePowerUpListener(this);
         powerUpManager.getActivePowerUpCredits().addListener(apc);
         createHighScoreUI();
     }
 
+    /**
+     * Create high scores board.
+     *
+     */
     private void createHighScoreUI() {
             boxOfHighScores.getChildren().clear();
             List<Player> top = highScore.getHighScoresList();
@@ -139,6 +147,13 @@ public class GameScene {
             }
     }
 
+    /**
+     * Create row for each player with high score.
+     *
+     * @param rank player's rank
+     * @param player player's info
+     * @return a row contain player's rank and name.
+     */
     private HBox createScoreRow(int rank, Player player) {
         Label rankLabel;
         Label info = new Label(player.toString());
@@ -163,8 +178,13 @@ public class GameScene {
         return row;
     }
 
-
-    protected void createPowerUpCreditsUI(PowerUpType type, DoubleProperty timer) {
+    /**
+     * Create power-up info board.
+     *
+     * @param type power-up type.
+     * @param timer time remaining.
+     */
+    protected void createPowerUpUI(PowerUpType type, DoubleProperty timer) {
         Label nameLabel = new Label(type.getName());
 
         Label timerLabel = new Label();
@@ -176,25 +196,43 @@ public class GameScene {
         row.setAlignment(Pos.CENTER);
 
         powerUpUIMap.put(type, row);
-        boxOfCredits.getChildren().add(row);
+        boxOfPowerUp.getChildren().add(row);
     }
 
-    protected void removePowerUpCreditsUI(PowerUpType type) {
+    /**
+     * Remove power-up info from the board.
+     *
+     * @param type power-up type need to remove.
+     */
+    protected void removePowerUpUI(PowerUpType type) {
         Node nodeToRemove = powerUpUIMap.remove(type);
         if (nodeToRemove != null) {
-            boxOfCredits.getChildren().remove(nodeToRemove);
+            boxOfPowerUp.getChildren().remove(nodeToRemove);
         }
     }
 
+    /**
+     * Something you need.
+     *
+     * @return this scene
+     */
     public Scene getScene() {
         return scene;
     }
 
+    /**
+     * Call map renderer for render map.
+     *
+     */
     public void renderMap() {
         RenderMap rendermap = new RenderMap();
         rendermap.render(currentLevel, brickList);
     }
 
+    /**
+     * Start game.
+     *
+     */
     public void start() {
         SceneManager.getInstance().getSoundManager().play("play");
         updateSkin();
@@ -202,10 +240,18 @@ public class GameScene {
         gameLoop.start();
     }
 
+    /**
+     * Stop game.
+     *
+     */
     public void stop() {
         gameLoop.stop();
     }
 
+    /**
+     * Reset game.
+     *
+     */
     public void reset() {
         currentLevel = 1;
         gameLoop.setScore(0);
@@ -217,6 +263,10 @@ public class GameScene {
         updateLivesUI();
     }
 
+    /**
+     * Next step...
+     *
+     */
     public void goToNextLevel() {
         gameLoop.stop();
         ++ currentLevel;
@@ -236,9 +286,6 @@ public class GameScene {
         }
     }
 
-    public void setCurrentLevel(int currentLevel) {
-        this.currentLevel = currentLevel;
-    }
 
     /**
      * Update lives UI based on current ball lives.
@@ -255,7 +302,7 @@ public class GameScene {
     }
 
     @FXML
-    public void pauseClicked() {
+    private void pauseClicked() {
           SceneManager.getInstance().getSoundManager().play("click");
           gameLoop.stop();
           sceneManager.switchTo("Pause");
@@ -263,19 +310,27 @@ public class GameScene {
     }
 
     @FXML
-    public void exitClicked() {
+    private void exitClicked() {
         SceneManager.getInstance().getSoundManager().play("click");
         System.out.println("Bấm Exit!");
         gameLoop.stop();
-        updateHighScores();
+        updateHighScore();
         sceneManager.switchTo("Menu");
     }
 
-    public void updateHighScores() {
+    /**
+     * Update high scores board.
+     *
+     */
+    public void updateHighScore() {
         highScore.addScore(gameLoop.getScore(), currentPlayerName);
         createHighScoreUI();
     }
 
+    /**
+     * Update UI of game scene.
+     *
+     */
     private void updateUI() {
         String backgroundPath = String.format("/levels/lv%d/lv%dBackground.png", currentLevel, currentLevel);
         String framePath = String.format("/levels/lv%d/KHUNG%d.png", currentLevel, currentLevel);
@@ -311,6 +366,10 @@ public class GameScene {
         }
     }
 
+    /**
+     * Update skin of paddle, ball.
+     *
+     */
     private void updateSkin() {
         SkinData selectedPaddle = SkinManager.getInstance().getSelectedPaddle();
         SkinData selectedBall = SkinManager.getInstance().getSelectedBall();

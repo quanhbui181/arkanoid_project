@@ -29,7 +29,6 @@ public class SceneManager {
 
     private final SoundManager soundManager = new SoundManager();
     private String currentPlayerName;
-
     private boolean isPlayed = false;
 
     private SceneManager() {
@@ -54,10 +53,6 @@ public class SceneManager {
     public void addGameScene(String name, GameScene gameScene) {
         this.gameSceneInstance = gameScene;
         this.scenes.put(name, gameScene.getScene());
-    }
-
-    public Scene getSceneName(String name){
-        return scenes.get(name);
     }
 
     public SoundManager getSoundManager() {

@@ -1,5 +1,9 @@
 package entities;
 
+/**
+ * Brick types manager.
+ *
+ */
 public enum BrickType {
 
     NORMAL(1, "/images/gameImages/brickImages/green-bricks.png"),
@@ -17,12 +21,24 @@ public enum BrickType {
         this.texturePath = texturePath;
     }
 
-    public int getHits() { return hits; }
+    public int getHits() {
+        return hits;
+    }
 
-    public String getTexturePath() { return texturePath; }
+    public String getTexturePath() {
+        return texturePath;
+    }
 
-    public boolean isUnbreakable() { return hits == -1; }
+    public boolean isUnbreakable() {
+        return hits == -1;
+    }
 
+    /**
+     * Get type of brick with remaining hits for update texture.
+     *
+     * @param hits remaining hits.
+     * @return type of brick.
+     */
     public static BrickType getBrickType(int hits) {
         if (hits == 0) {
             return null;

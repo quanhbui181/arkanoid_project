@@ -11,20 +11,30 @@ import java.util.List;
 
 import static java.lang.Math.max;
 
+/**
+ * Manage high scores list of game.
+ *
+ */
 public class HighScore {
 
     private static final String HIGHSCORE_PATH = "highscores.txt";
 
     private final List<Player> highScoresList;
 
+    /**
+     * Initialize high scores list managers.
+     *
+     */
     public HighScore() {
         this.highScoresList = loadHighScoresList();
     }
 
-    public List<Player> getHighScoresList() {
-        return highScoresList;
-    }
-
+    /**
+     * Add player to the list.
+     *
+     * @param score score of current player.
+     * @param currentPlayerName name of current player.
+     */
     public void addScore(int score, String currentPlayerName) {
         if (score == 0) {
             return;
@@ -46,6 +56,10 @@ public class HighScore {
         saveHighScoresList();
     }
 
+    /**
+     * Save high scores for the next time.
+     *
+     */
     private void saveHighScoresList() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(HIGHSCORE_PATH))) {
             for (Player player : highScoresList) {
@@ -58,6 +72,11 @@ public class HighScore {
         }
     }
 
+    /**
+     * Load high scores list in the last time.
+     *
+     * @return a list of top 8 players with the most score.
+     */
     private List<Player> loadHighScoresList() {
         List<Player> load = new ArrayList<Player>();
         if (!new File(HIGHSCORE_PATH).exists()) {
@@ -76,5 +95,10 @@ public class HighScore {
             System.err.println(e.getMessage());
         }
         return load;
+    }
+
+    // Getter method.
+    public List<Player> getHighScoresList() {
+        return highScoresList;
     }
 }

@@ -21,7 +21,6 @@ public class Paddle extends MovableObject {
     private double speed = Constants.PADDLE_SPEED; // Default paddle movement speed.
     private PowerUpType currentPowerUp = PowerUpType.NONE; // Current paddle power-up.
     private final boolean[] keyPressed = new boolean[256]; // Handle keyboard events.
-    private String originalTexturePath = Constants.PADDLE_TEXTURE_PATH;
 
     /**
      * Set paddle texture for power-up effect.
@@ -42,6 +41,7 @@ public class Paddle extends MovableObject {
      */
     public void resetTexture() {
         try {
+            String originalTexturePath = Constants.PADDLE_TEXTURE_PATH;
             String textureUrl = Objects.requireNonNull(getClass().getResource(originalTexturePath)).toExternalForm();
             this.setTexture(new javafx.scene.image.Image(textureUrl));
         } catch (NullPointerException e) {
@@ -102,7 +102,6 @@ public class Paddle extends MovableObject {
     @Override
     public void update(double deltaTime) {
         move(deltaTime);
-        // Update power-up sau...
     }
 
     @Override
@@ -124,11 +123,19 @@ public class Paddle extends MovableObject {
 
     // Getter and Setter method.
 
-    public double getSpeed() { return speed; }
+    public double getSpeed() {
+        return speed;
+    }
 
-    public void setSpeed(double speed) { this.speed = speed; }
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 
-    public PowerUpType getCurrentPowerUp() { return currentPowerUp; }
+    public PowerUpType getCurrentPowerUp() {
+        return currentPowerUp;
+    }
 
-    public void setCurrentPowerUp(PowerUpType currentPowerUp) { this.currentPowerUp = currentPowerUp; }
+    public void setCurrentPowerUp(PowerUpType currentPowerUp) {
+        this.currentPowerUp = currentPowerUp;
+    }
 }
