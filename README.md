@@ -54,28 +54,19 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 ### IV. Bộ sưu tập Skin
 
 #### 🎱 Skin Bóng
-
 <div align="center">
-
-![Ball Skin 1](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin.png?raw=true) <br>
-![Ball Skin 4](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin4.png?raw=true) <br>
-![Ball Skin 6](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin6.png?raw=true) <br>
-
-Và nhiều hơn nữa....
-
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin.png?raw=true" width="100" style="margin:5px;">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin4.png?raw=true" width="100" style="margin:5px;">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin6.png?raw=true" width="100" style="margin:5px;">
 </div>
 
 #### 🛹 Skin Thanh Đỡ
-
 <div align="center">
-
-![Green Paddle](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/greenPaddle.png?raw=true) <br>
-![Purple Paddle](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/purplePaddle.png?raw=true) <br>
-![Blue Paddle](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/bluePaddle.png?raw=true) <br>
-
-Và nhiều hơn nữa....
-
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/greenPaddle.png?raw=true" width="120" style="margin:5px;">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/purplePaddle.png?raw=true" width="120" style="margin:5px;">
+  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/bluePaddle.png?raw=true" width="120" style="margin:5px;">
 </div>
+
 
 ## V. Hướng dẫn chơi game
 
