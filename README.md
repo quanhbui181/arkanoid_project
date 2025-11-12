@@ -54,12 +54,13 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 ### **UML Diagram**
 ![UML Diagram](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/Akanoi%20UML.png)
 
+<div align="center">
 ### **Tổ chức code**
-<p align="center">
-  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/1.png" width="30%" />
-  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/2.png" width="30%" />
-  <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/3.png" width="30%" />
-</p>
+<img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/1.png" width="30%" style="vertical-align: top; margin: 0 5px;" />
+<img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/2.png" width="30%" style="vertical-align: top; margin: 0 5px;" />
+<img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/3.png" width="30%" style="vertical-align: top; margin: 0 5px;" />
+</div>
+
 
 
 ## IV. Bộ sưu tập Skin
