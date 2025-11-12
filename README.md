@@ -51,21 +51,27 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 - Game Loop (vòng lặp game)
 - Game Scene (quản lý màn chơi)
 
-IV. Bộ sưu tập Skin
-🎱 Skin Bóng
+### IV. Bộ sưu tập Skin
+
+#### 🎱 Skin Bóng
+
 <div align="center">
-https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin.png?raw=true
-https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin4.png?raw=true
-https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin6.png?raw=true
+
+![Ball Skin 1](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin.png?raw=true) <br>
+![Ball Skin 4](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin4.png?raw=true) <br>
+![Ball Skin 6](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/ballSkins/ballSkin6.png?raw=true) <br>
 
 Và nhiều hơn nữa....
 
 </div>
-🛹 Skin Thanh Đỡ
+
+#### 🛹 Skin Thanh Đỡ
+
 <div align="center">
-https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/greenPaddle.png?raw=true
-https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/purplePaddle.png?raw=true
-https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/bluePaddle.png?raw=true
+
+![Green Paddle](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/greenPaddle.png?raw=true) <br>
+![Purple Paddle](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/purplePaddle.png?raw=true) <br>
+![Blue Paddle](https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/images/shopImages/paddleSkins/bluePaddle.png?raw=true) <br>
 
 Và nhiều hơn nữa....
 
