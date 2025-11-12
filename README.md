@@ -56,11 +56,19 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 
 
 ### **Tổ chức code**
-<div align="center">
-<img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/3.png" width="30%" style="vertical-align: top; margin: 0 5px;" />
-<img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/2.png" width="30%" style="vertical-align: top; margin: 0 5px;" />
-<img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/1.png" width="30%" style="vertical-align: top; margin: 0 5px;" />
-</div>
+<table align="center" style="border:none;">
+  <tr>
+    <td valign="top" style="border:none;">
+      <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/3.png" alt="Cấu trúc UI" width="300"/>
+    </td>
+    <td valign="top" style="border:none;">
+      <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/2.png" alt="Cấu trúc PowerUp" width="300"/>
+    </td>
+    <td valign="top" style="border:none;">
+      <img src="https://github.com/Group8-OOPProject/ARKANOID_PROJECT/blob/main/resources/1.png" alt="Cấu trúc chung" width="300"/>
+    </td>
+  </tr>
+</table>
 
 
 
