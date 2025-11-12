@@ -138,13 +138,19 @@ public class GameLoop extends AnimationTimer {
                 brick.update(deltaTime);
                 if (brick.getIsDestroyed()) {
                     int newScore = score.get() + 1;
-                    CreditsManager.getInstance().addCredits(10); // Add 10 credits per brick destroyed
-                    if (brick.getCurrentBrickType() == BrickType.MEDIUM) {
+                    CreditsManager.getInstance().addCredits(10);
+                    if (brick.getCurrentBrickType() == BrickType.HALF_MEDIUM) {
+                        newScore += 1;
+                        CreditsManager.getInstance().addCredits(5);
+                    } else if (brick.getCurrentBrickType() == BrickType.MEDIUM) {
                         newScore += 2;
+                        CreditsManager.getInstance().addCredits(10);
+                    } else if (brick.getCurrentBrickType() == BrickType.HALF_HARD) {
+                        newScore += 3;
                         CreditsManager.getInstance().addCredits(20);
-                    } else if (brick.getCurrentBrickType() == BrickType.HARD) {
+                    }   else if (brick.getCurrentBrickType() == BrickType.HARD) {
                         newScore += 4;
-                        CreditsManager.getInstance().addCredits(50);
+                        CreditsManager.getInstance().addCredits(30);
                     }
                     score.set(newScore);
                 }

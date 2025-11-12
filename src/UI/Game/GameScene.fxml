@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="930.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fitHeight="930.0" fitWidth="1280.0" preserveRatio="true">
+        <ImageView fx:id="backgroundImageView" fitHeight="930.0" fitWidth="1280.0" preserveRatio="true">
             <image>
                 <Image url="/levels/lv1/lv1Background.png" />
             </image>
@@ -70,33 +70,78 @@
             <Image url="/levels/General/LIFESKHUNG.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="851.0" fitWidth="890.0" layoutX="193.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="frameImageView" fitHeight="851.0" fitWidth="890.0" layoutX="193.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/levels/lv1/KHUNG_GAME.png" />
+            <Image url="/levels/lv1/KHUNG1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="457.0" layoutX="412.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="titleImageView" fitHeight="79.0" fitWidth="457.0" layoutX="412.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/levels/lv1/ARKANOID1.png" />
          </image>
       </ImageView>
-      <Label fx:id="levelLabel" layoutX="1160.0" layoutY="674.0" text="01" textFill="WHITE">
-         <font>
-            <Font name="Agency FB" size="58.0" />
-         </font>
-      </Label>
-        <StackPane prefHeight="100" prefWidth="187" style="-fx-border-color: red;" AnchorPane.leftAnchor="1086.0" AnchorPane.topAnchor="50.0">
-            <Label fx:id="scoreLabel" style="-fx-font-family: 'Agency FB';                           -fx-font-size: 64px;                           -fx-text-fill: white;                           -fx-font-weight: bold;" text="0" StackPane.alignment="CENTER" />
+        <StackPane AnchorPane.topAnchor="659.0"
+                   AnchorPane.leftAnchor="1084.0"
+                   prefWidth="187"
+                   prefHeight="90"
+                   style="-fx-border-color: transparent;">
+            <Label fx:id="levelLabel" text="01"
+                   StackPane.alignment="CENTER"
+                   style="-fx-font-family: 'Agency FB';
+                          -fx-font-size: 55px;
+                          -fx-text-fill: white;
+                          -fx-font-weight: bold;" />
         </StackPane>
-        <VBox fx:id="boxOfCredits" alignment="TOP_CENTER" prefHeight="300" prefWidth="187" spacing="10" style="-fx-background: transparent;                            -fx-background-color: transparent;                            -fx-border-color: red;                            -fx-font-family: 'Agency FB';                            -fx-font-size: 20px;                            -fx-text-fill: white;                            -fx-font-weight: bold;" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="50">
+        <StackPane AnchorPane.topAnchor="50.0"
+                   AnchorPane.leftAnchor="1086.0"
+                   prefWidth="187"
+                   prefHeight="100"
+                   style="-fx-border-color: transparent;">
+            <Label fx:id="scoreLabel" text="0"
+                   StackPane.alignment="CENTER"
+                   style="-fx-font-family: 'Agency FB';
+                          -fx-font-size: 64px;
+                          -fx-text-fill: white;
+                          -fx-font-weight: bold;" />
+        </StackPane>
+        <VBox fx:id="boxOfCredits"
+              AnchorPane.topAnchor="50"
+              AnchorPane.leftAnchor="4.0"
+              prefWidth="187"
+              prefHeight="300"
+              spacing="10"
+              alignment="TOP_CENTER"
+              style="-fx-background: transparent;
+                           -fx-border-color: transparent;
+                           -fx-font-family: 'Agency FB';
+                           -fx-font-size: 20px;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;" >
         </VBox>
-        <VBox fx:id="boxOfHighScores" alignment="TOP_CENTER" layoutX="1084.0" layoutY="158.0" prefHeight="427" prefWidth="187" spacing="20" style="-fx-background: transparent;                            -fx-background-color: transparent;                            -fx-border-color: red;                            -fx-font-family: 'Agency FB';                            -fx-font-size: 20px;                            -fx-font-weight: bold;" AnchorPane.leftAnchor="1084.0" AnchorPane.topAnchor="158.0">
+        <VBox fx:id="boxOfHighScores"
+              AnchorPane.topAnchor="230"
+              AnchorPane.leftAnchor="1086.0"
+              prefWidth="187"
+              prefHeight="365"
+              spacing="20"
+              alignment="TOP_CENTER"
+              style="-fx-background: transparent;
+                           -fx-border-color: transparent;
+                           -fx-font-family: 'Agency FB';
+                           -fx-font-size: 20px;
+                           -fx-font-weight: bold;" >
         </VBox>
-      <Label fx:id="creditsLabel" layoutX="37.0" layoutY="478.0" prefHeight="107.0" prefWidth="138.0" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Book Antiqua" size="80.0" />
-         </font>
-      </Label>
-
+        <StackPane AnchorPane.topAnchor="440.0"
+                   AnchorPane.leftAnchor="4.0"
+                   prefWidth="187.0"
+                   prefHeight="185.0"
+                   style="-fx-border-color: transparent;">
+            <Label fx:id="creditsLabel"
+                   StackPane.alignment="CENTER"
+                   style="-fx-font-family: 'Agency FB';
+                          -fx-font-size: 45px;
+                          -fx-text-fill: white;
+                          -fx-font-weight: bold;" />
+        </StackPane>
     </children>
 </AnchorPane>

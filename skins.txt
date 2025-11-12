@@ -1,4 +1,0 @@
-selectedPaddle:1
-selectedBall:1
-ownedPaddles:1
-ownedBalls:1

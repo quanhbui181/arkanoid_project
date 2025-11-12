@@ -5,6 +5,8 @@ import PowerUpSystem.PowerUpType;
 import RenderManager.RenderMap;
 import UI.Shop.CreditsManager;
 import UI.SceneManager;
+import UI.Shop.SkinData;
+import UI.Shop.SkinManager;
 import core.GameLoop;
 import core.HighScore;
 import core.InputHandler;
@@ -23,6 +25,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Skin;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -31,10 +35,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import utils.Constants;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.URL;
+import java.util.*;
 
 public class GameScene {
 
@@ -53,7 +55,7 @@ public class GameScene {
     private final PowerUpManager powerUpManager;
     private final Map<PowerUpType, Node> powerUpUIMap = new HashMap<>();
     private final HighScore highScore;
-    private String currentPlayerName;
+    private final String currentPlayerName = sceneManager.getCurrentPlayerName();
 
     @FXML
     private ImageView heart1;
@@ -64,6 +66,8 @@ public class GameScene {
     @FXML
     private Label scoreLabel;
     @FXML
+    private Label levelLabel;
+    @FXML
     private VBox boxOfCredits;
     @FXML
     private VBox boxOfHighScores;
@@ -73,6 +77,12 @@ public class GameScene {
     private Button pauseButton;
     @FXML
     private Button exitButton;
+    @FXML
+    private ImageView backgroundImageView;
+    @FXML
+    private ImageView titleImageView;
+    @FXML
+    private ImageView frameImageView;
 
 
     public GameScene() {
@@ -81,10 +91,8 @@ public class GameScene {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        System.err.println("Check 1");
         Canvas canvas = new Canvas(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         gc = canvas.getGraphicsContext2D();
-        RenderMap renderMap = new RenderMap();
         brickList = new ArrayList<>();
         paddle = new Paddle();
         ball = new Ball();
@@ -95,11 +103,9 @@ public class GameScene {
         highScore = new HighScore();
         AnchorPane root;
         try {
-            System.err.println("Check 2");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/Game/GameScene.fxml"));
             loader.setController(this);
             root = loader.load();
-            System.err.println("Check 3");
             root.getChildren().add(1, canvas);
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -184,7 +190,15 @@ public class GameScene {
         return scene;
     }
 
+    public void renderMap() {
+        RenderMap rendermap = new RenderMap();
+        rendermap.render(currentLevel, brickList);
+    }
+
     public void start() {
+        SceneManager.getInstance().getSoundManager().play("play");
+        updateSkin();
+        updateUI();
         gameLoop.start();
     }
 
@@ -193,37 +207,33 @@ public class GameScene {
     }
 
     public void reset() {
-        SceneManager.getInstance().getSoundManager().play("play");
         currentLevel = 1;
         gameLoop.setScore(0);
         gameLoop.reset();
         brickList.clear();
         gameLoop.getPowerUpManager().reset();
-        RenderMap rendermap = new RenderMap();
-        rendermap.render(currentLevel, brickList);
         ball.reset();
         paddle.reset();
+        renderMap();
         updateLivesUI();
     }
 
     public void goToNextLevel() {
         gameLoop.stop();
-        currentLevel++;
-        final int MAX_LEVEL = 15;
+        ++ currentLevel;
+        final int MAX_LEVEL = 10;
         if (currentLevel > MAX_LEVEL) {
             System.out.println("thang me may roi");
             sceneManager.switchTo("Win");
         } else {
-            SceneManager.getInstance().getSoundManager().play("play");
             brickList.clear();
             gameLoop.getPowerUpManager().reset();
-            RenderMap rendermap = new RenderMap();
-            rendermap.render(currentLevel, brickList);
             ball.reset();
             paddle.reset();
             updateLivesUI();
+            updateUI();
+            renderMap();
             gameLoop.start();
-
         }
     }
 
@@ -243,8 +253,6 @@ public class GameScene {
         heart2.setVisible(lives >= 2);
         heart3.setVisible(lives >= 3);
 
-        // Debug log
-        // System.out.println("💖 Lives UI updated: " + lives + " lives");
     }
 
     @FXML
@@ -269,7 +277,48 @@ public class GameScene {
         createHighScoreUI();
     }
 
-    public void addPlayer(String currentPlayerName) {
-        this.currentPlayerName = currentPlayerName;
+    private void updateUI() {
+        String backgroundPath = String.format("/levels/lv%d/lv%dBackground.png", currentLevel, currentLevel);
+        String framePath = String.format("/levels/lv%d/KHUNG%d.png", currentLevel, currentLevel);
+        String titlePath = String.format("/levels/lv%d/ARKANOID%d.png", currentLevel, currentLevel);
+
+        URL backgroundUrl = getClass().getResource(backgroundPath);
+        URL frameUrl = getClass().getResource(framePath);
+        URL titleUrl = getClass().getResource(titlePath);
+
+        if (backgroundUrl != null && frameUrl != null && titleUrl != null) {
+            Image backgroundImage = new Image(backgroundUrl.toString());
+            Image frameImage = new Image(frameUrl.toString());
+            Image titleImage = new Image(titleUrl.toString());
+            backgroundImageView.setImage(backgroundImage);
+            frameImageView.setImage(frameImage);
+            titleImageView.setImage(titleImage);
+        } else {
+            System.err.println("Cannot find background: ");
+            if (backgroundUrl == null) {
+                System.err.println(" ! " + backgroundPath);
+            }
+            if (frameUrl == null) {
+                System.err.println(" ! " + framePath);
+            }
+            if (titleUrl == null) {
+                System.err.println(" ! " + titlePath);
+            }
+        }
+        if (currentLevel < 10) {
+            levelLabel.setText("0" + currentLevel);
+        } else {
+            levelLabel.setText("" + currentLevel);
+        }
     }
+
+    private void updateSkin() {
+        SkinData selectedPaddle = SkinManager.getInstance().getSelectedPaddle();
+        SkinData selectedBall = SkinManager.getInstance().getSelectedBall();
+        Image texturePaddle = new Image(Objects.requireNonNull(getClass().getResourceAsStream(selectedPaddle.getImagePath())));
+        Image textureBall = new Image(Objects.requireNonNull(getClass().getResourceAsStream(selectedBall.getImagePath())));
+        paddle.setTexture(texturePaddle);
+        ball.setTexture(textureBall);
+    }
+
 }

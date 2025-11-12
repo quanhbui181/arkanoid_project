@@ -63,17 +63,20 @@ public class ShopScene implements Initializable  {
 
       //Kiem tra xem do la nut nao -> hien thi scrollpane tuong ung
       if(selectedButton == paddleButton){
-           paddleScrollPane.setVisible(true);
+          SceneManager.getInstance().getSoundManager().play("click");
+          paddleScrollPane.setVisible(true);
            ballScrollPane.setVisible(false);
       }
       else if(selectedButton == ballButton){
-           paddleScrollPane.setVisible(false);
+          SceneManager.getInstance().getSoundManager().play("click");
+          paddleScrollPane.setVisible(false);
            ballScrollPane.setVisible(true);
       }
     });
 
     exitButton.setOnAction(e -> {
-      SceneManager.getInstance().switchTo("Menu");
+        SceneManager.getInstance().getSoundManager().play("click");
+        SceneManager.getInstance().switchTo("Menu");
     });
 
     loadPaddleSkins();
@@ -93,8 +96,8 @@ public class ShopScene implements Initializable  {
         controller.setData(skin, true, creditsManager, skinManager, this::refreshPaddleList);
 
         paddleSkinContain.getChildren().add(itemNode);
-      } catch(IOException e){
-        e.printStackTrace();
+      } catch(Exception e){
+          System.err.println(e.getMessage());;
       }
     }
   }
@@ -113,8 +116,8 @@ public class ShopScene implements Initializable  {
         controller.setData(skin, false, creditsManager, skinManager, this::refreshBallList);
 
         ballSkinContain.getChildren().add(itemNode);
-      } catch(IOException e){
-        e.printStackTrace();
+      } catch(Exception e){
+          System.err.println(e.getMessage());
       }
     }
   }

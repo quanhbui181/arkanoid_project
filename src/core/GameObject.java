@@ -17,7 +17,7 @@ public abstract class GameObject {
     private int height; // The height of the object.
     private Image texture; // The texture of the object.
 
-    private void loadTexture(String texturePath) {
+    public void loadTexture(String texturePath) {
         texture = null;
         try {
             String textureUrl = Objects.requireNonNull(getClass().getResource(texturePath)).toExternalForm();

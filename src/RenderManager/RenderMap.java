@@ -27,9 +27,11 @@ public class RenderMap {
             while ((line = readFile.readLine()) != null) {
                 if (line.isEmpty()) continue;
                 int size = line.length();
-                for (int i = 0; i < size; ++i) {
+                for (int i = 0; i < size; ++ i) {
                     int num = line.charAt(i) - '0';
-                    if (num == 0) continue;
+                    if (num == 0) {
+                        continue;
+                    }
                     int x = Constants.MARGIN_WIDTH + i * Constants.BRICK_WIDTH + (i + 1) * Constants.BRICK_SPACING;
                     int y = Constants.MARGIN_HEIGHT + j * Constants.BRICK_HEIGHT + (j + 1) * Constants.BRICK_SPACING;
                     BrickType type = BrickType.NORMAL;
@@ -38,21 +40,26 @@ public class RenderMap {
                             // good
                             break;
                         case 2:
-                            type = BrickType.MEDIUM;
+                            type = BrickType.HALF_MEDIUM;
                             break;
                         case 3:
-                            type = BrickType.HARD;
+                            type = BrickType.MEDIUM;
                             break;
                         case 4:
+                            type = BrickType.HALF_HARD;
+                            break;
+                        case 5:
+                            type = BrickType.HARD;
+                            break;
+                        case 6:
                             type = BrickType.IMPOSSIBLE;
                             break;
                         default:
                             System.err.println("Invalid number for BrickType !");
-
                     }
                     brickList.add(new Brick(x, y, Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT, type));
                 }
-                ++j;
+                ++ j;
             }
             System.out.println("\uD83C\uDFAE Current level: " + level);
         } catch (Exception e) {

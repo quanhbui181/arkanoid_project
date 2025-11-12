@@ -3,6 +3,8 @@ package UI.Menu;
 import UI.SceneManager;
 import UI.Game.GameScene;
 
+import UI.Shop.CreditsManager;
+import UI.Shop.SkinManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -33,8 +35,6 @@ public class MenuScene {
     @FXML
     private ImageView exitButton;
 
-
-
     @FXML
     private void onStartClicked(MouseEvent e) {
         System.out.println("Start clicked!");
@@ -61,18 +61,23 @@ public class MenuScene {
     @FXML
     private void onTutorialClicked(MouseEvent e) {
         System.out.println("Tutorial clicked!");
+        SceneManager.getInstance().getSoundManager().play("click");
         SceneManager.getInstance().switchTo("Tutorial");
     }
 
     @FXML
     private void onShopClicked(MouseEvent e) {
         System.out.println("Shop clicked!");
+        SceneManager.getInstance().getSoundManager().play("click");
         SceneManager.getInstance().switchTo("Shop");
     }
 
     @FXML
     private void onExitClicked(MouseEvent e) {
+        CreditsManager.getInstance().saveCredits();
+        SkinManager.getInstance().saveSkins();
         System.out.println("Exit clicked!");
+        SceneManager.getInstance().getSoundManager().play("click");
         System.exit(0);
     }
 }

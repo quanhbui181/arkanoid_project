@@ -86,8 +86,10 @@ public class Brick extends GameObject {
 
     @Override
     public void update(double deltaTime) {
-        if (currentBrickType.isUnbreakable()) return;
-
+        if (currentBrickType.isUnbreakable()) {
+            return;
+        }
+        updateTexture();
         // Check if brick is not destroyed and not logged.
         if (lives <= 0 && !destroyedLog) {
             destroyedLog = true;
@@ -129,6 +131,18 @@ public class Brick extends GameObject {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Update brick's texture by hits remaining.
+     *
+     */
+    public void updateTexture() {
+        BrickType newBrickType = BrickType.getBrickType(lives);
+        if (newBrickType != null && newBrickType != currentBrickType) {
+            // currentBrickType = newBrickType;
+            super.loadTexture(newBrickType.getTexturePath());
+        }
     }
 
 }

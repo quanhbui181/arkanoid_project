@@ -13,15 +13,10 @@ import java.io.IOException;
  */
 public class Main extends Application {
 
-
-  private SkinManager skinManager = SkinManager.getInstance();
-  private SceneManager sm = SceneManager.getInstance();
-
+    private SceneManager sm = SceneManager.getInstance();
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-
 
         sm.setPrimaryStage(primaryStage);
 

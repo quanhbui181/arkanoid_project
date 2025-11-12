@@ -1,6 +1,8 @@
 package UI.Shop;
 
 import java.io.InputStream;
+
+import UI.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -59,8 +61,14 @@ public class ItemController{
 
     updateButtons();
 
-    buyButton.setOnAction(e -> handleBuy());
-    equipButton.setOnAction(e -> handleEquip());
+    buyButton.setOnAction(e -> {
+        SceneManager.getInstance().getSoundManager().play("click");
+        handleBuy();
+    });
+    equipButton.setOnAction(e -> {
+        SceneManager.getInstance().getSoundManager().play("click");
+        handleEquip();
+    });
   }
 
   private void updateButtons(){
@@ -97,7 +105,7 @@ public class ItemController{
         boolean bought = isPaddle ? skinManager.buyPaddle(skin.getId()) : skinManager.buyBall(skin.getId());
         if(bought && refreshUI != null) refreshUI.run();
       } else {
-        showAlert("Not enough credits to buy this skin.");
+        showAlert();
       }
     }
   }
@@ -113,11 +121,11 @@ public class ItemController{
     }
   }
 
-  private void showAlert(String message){
+  private void showAlert(){
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setTitle("Shop");
     alert.setHeaderText(null);
-    alert.setContentText(message);
+    alert.setContentText("Not enough credits to buy this skin.");
     alert.showAndWait();
   }
 }

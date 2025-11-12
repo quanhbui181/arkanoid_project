@@ -30,9 +30,10 @@ public class SceneManager {
     private final SoundManager soundManager = new SoundManager();
     private String currentPlayerName;
 
+    private boolean isPlayed = false;
+
     private SceneManager() {
         askForName();
-
     } // k cho phep khoi tao obj ben ngoai
 
     public static SceneManager getInstance() {
@@ -53,11 +54,18 @@ public class SceneManager {
     public void addGameScene(String name, GameScene gameScene) {
         this.gameSceneInstance = gameScene;
         this.scenes.put(name, gameScene.getScene());
-        this.gameSceneInstance.addPlayer(currentPlayerName);
     }
 
-    public Scene getScene(String name){
+    public Scene getSceneName(String name){
         return scenes.get(name);
+    }
+
+    public SoundManager getSoundManager() {
+        return soundManager;
+    }
+
+    public String getCurrentPlayerName() {
+        return currentPlayerName;
     }
 
     public void switchTo(String name) {
@@ -83,16 +91,18 @@ public class SceneManager {
         if ("Game".equals(name) && gameSceneInstance != null) {
             System.out.println("Đang vào Game !");
 
-            if (!("Pause".equals(previousSceneName))) {
-                gameSceneInstance.reset();
+            if ("Pause".equals(previousSceneName)) {
+                gameSceneInstance.start();
+            } else {
+                if (isPlayed) {
+                    gameSceneInstance.reset();
+                } else {
+                    gameSceneInstance.renderMap();
+                    isPlayed = true;
+                }
+                gameSceneInstance.start();
             }
-
-            gameSceneInstance.start();
         }
-    }
-
-    public SoundManager getSoundManager() {
-        return soundManager;
     }
 
     private boolean isValidName(String name) {
