@@ -115,6 +115,7 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 
 ### Điều khiển
 - **← →**: Di chuyển thanh đỡ sang trái/phải.
+- **Space**: Kích hoạt bóng rơi để chơi. 
 - Dùng chuột để thao tác với các nút.
 
 ### 🎁 **Vật phẩm có lợi**
