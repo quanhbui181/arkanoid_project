@@ -19,7 +19,7 @@
 
 ## I. Thông tin thành viên
 
-**Thành viên nhóm 11:**
+**Thành viên nhóm 8:**
 - **Nguyễn Hoàng Hải (K69I-IS1)**.
 - **Nguyễn Tuấn Đạt (K69I-IS1)**.
 - **Bùi Quang Anh (K69I-IS1)**.
@@ -139,4 +139,4 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 - **Dự án Arkanoid không chỉ là một game giải trí mà còn là minh chứng cho việc áp dụng thành công các nguyên lý Lập trình Hướng Đối tượng vào thực tế. Qua dự án này, nhóm đã nắm vững các khái niệm quan trọng như encapsulation, inheritance, polymorphism và một chút design patterns**.
 
 ---
-*Được phát triển bởi Nhóm 11 - Môn Lập trình Hướng Đối tượng*
+*Được phát triển bởi Nhóm 8 - Môn Lập trình Hướng Đối tượng*
