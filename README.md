@@ -140,3 +140,34 @@ Arkanoid là game đập gạch cổ điển được phát triển bằng Java 
 
 ---
 *Được phát triển bởi Nhóm 8 - Môn Lập trình Hướng Đối tượng*
+
+## Hướng dẫn cài dặt và sử dụng
+### 1. Requirements
+
+- JDK 25
+- JavaFX 25.0.4
+- Any Java IDE that supports JDK 25 and JavaFX
+- Windows x64
+
+This project does not use Maven or Gradle, so JavaFX must be configured manually.
+
+### 2. Install JDK 25 and set it as the project's JDK.
+
+### 3. Download the JavaFX 25.0.4 Windows x64 SDK and then extract the zip file.
+
+### 4. In your IDE, add the following folder as a Java library/dependency: <path-to-javafx-sdk-25.0.4>/lib
+
+### 5. Configure the application
+
+Set the main class to:
+
+Main
+
+Add these VM/Run arguments:
+
+--module-path "<path-to-javafx-sdk-25.0.4>/lib" --add-modules javafx.controls,javafx.fxml,javafx.media --enable-native-access=javafx.graphics
+
+### 6. Mark resources directory as Resources Root.
+
+### 7. Build the project and run.
+
